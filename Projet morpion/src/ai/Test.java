@@ -1,5 +1,7 @@
 package ai;
 
+import application.MainController;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -29,7 +31,7 @@ public class Test {
 			//
 			//TRAIN THE MODEL ...
 			//
-			double epochs = 100000 ;
+			double epochs = 1000000 ;
 			HashMap<Integer, Coup> mapTrain = loadCoupsFromFile("./resources/train_dev_test/train.txt");
 			MultiLayerPerceptron net = learn(9, mapTrain, config.hiddenLayerSize, config.learningRate, config.numberOfhiddenLayers, true, epochs);
 			//
@@ -87,7 +89,10 @@ public class Test {
 
 				error += net.backPropagate(c.in, c.out);
 
-				if ( i % 10000 == 0 && verbose) System.out.println("Error at step "+i+" is "+ (error/(double)i));
+				if ( i % 10000 == 0 && verbose) {
+					System.out.println("Error at step "+i+" is "+ (error/(double)i));
+					
+				}
 			}
 			if ( verbose ) 
 				System.out.println("Learning completed!");

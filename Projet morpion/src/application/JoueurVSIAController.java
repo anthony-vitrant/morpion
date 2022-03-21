@@ -20,9 +20,7 @@ public class JoueurVSIAController {
 	
 	public static String diff = null;
 	
-	
-	public
-	ChoiceBox<String> difficulte = new ChoiceBox<>();
+	public ChoiceBox<String> difficulte = new ChoiceBox<>();
 	
 	public void valider(ActionEvent e) throws IOException, InterruptedException {
 		if (difficulte.getValue().equals("Choix de la difficulté")) {
@@ -30,7 +28,7 @@ public class JoueurVSIAController {
 		}
 		else {
 			
-			diff = difficulte.getValue();
+			diff = difficulte.getValue(); //récuperation de la difficulté
 			System.out.println("Difficulté : "+diff);
 			
 			
@@ -38,24 +36,19 @@ public class JoueurVSIAController {
 			cfl.loadConfigFile("./resources/config.txt");
 			
 			
-			if (diff.equals("Facile")) {
-				config = cfl.get("F");
-			}
-			else if (diff.equals("Difficile")){
-				config = cfl.get("D");
-			}
+			if (diff.equals("Facile")) config = cfl.get("F"); //Si difficulté = facile
+			else if (diff.equals("Difficile"))config = cfl.get("D"); //Si difficulté = difficile
 			
 			System.out.println("Config : "+config);
 			
 			File file = new File("resources/models/Model_"+config.numberOfhiddenLayers+"_"+config.learningRate+"_"+config.hiddenLayerSize+".srl");
             
-            if (file.exists()) {
+            if (file.exists()) { // test si le model existe deja
                 System.out.println("Le modele existe deja !");
                 alertModele();
                 
             }
-            else {
-        
+            else { //Si le model existe pas, lancement de l'apprentissage
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Task.fxml"));
                 Parent root = fxmlLoader.load();
                 Stage stage = new Stage();
@@ -64,9 +57,33 @@ public class JoueurVSIAController {
                 stage.setResizable(false);
                 stage.show();
             }
-			
-			}
+		}
 	}
+	
+	
+	public void lancerPartie(ActionEvent e) throws IOException {
+		
+		if (difficulte.getValue().equals("Choix de la difficulté")) {
+			alert();
+		}
+		else {
+			MainController.stage.close(); //fermeture de l'ancienne fenetre
+			
+			System.out.println("Lancement de la partie");
+			
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TerrainJoueurVSIA.fxml")); //chargemnt du terrain JoueurVSIA
+	        Parent root = fxmlLoader.load();
+	        Stage stage = new Stage();
+	        stage.setTitle("Partie");
+	        stage.setScene(new Scene(root, 720, 510));
+	        stage.setResizable(false);
+	        stage.show();
+		}
+		
+		
+	}
+	
+	
 	
 	private void alert() {
 		Alert alert = new Alert(AlertType.WARNING);

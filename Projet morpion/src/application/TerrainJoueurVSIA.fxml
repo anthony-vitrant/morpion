@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="514.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.JoueurVSIAController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="514.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TerrainJoueurVSIA">
    <center>
-      <AnchorPane prefHeight="516.0" prefWidth="725.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="510.0" prefWidth="720.0" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="lbl" layoutX="211.0" layoutY="26.0" prefHeight="83.0" prefWidth="309.0" text="Le Jeu du Morpion">
                <font>
@@ -37,6 +37,7 @@
             <Button layoutX="229.0" layoutY="318.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" />
             <Button layoutX="320.0" layoutY="318.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" />
             <Button layoutX="410.0" layoutY="318.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" />
+            <Button layoutX="312.0" layoutY="444.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="106.0" text="Recommencer" />
          </children>
       </AnchorPane>
    </center>

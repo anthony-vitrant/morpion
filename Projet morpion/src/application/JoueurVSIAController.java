@@ -1,6 +1,8 @@
 package application;
 
 import javafx.event.ActionEvent;
+
+import java.io.File;
 import java.io.IOException;
 import ai.Config;
 import ai.ConfigFileLoader;
@@ -45,21 +47,40 @@ public class JoueurVSIAController {
 			
 			System.out.println("Config : "+config);
 			
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Task.fxml"));
-			Parent root = fxmlLoader.load();
-			Stage stage = new Stage();
-			stage.setTitle("Apprentissage");
-			stage.setScene(new Scene(root, 500, 200));
-			stage.setResizable(false);
-			stage.show();
+			File file = new File("resources/models/Model_"+config.numberOfhiddenLayers+"_"+config.learningRate+"_"+config.hiddenLayerSize+".srl");
+            
+            if (file.exists()) {
+                System.out.println("Le modele existe deja !");
+                alertModele();
+                
+            }
+            else {
+        
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Task.fxml"));
+                Parent root = fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.setTitle("Apprentissage");
+                stage.setScene(new Scene(root, 500, 200));
+                stage.setResizable(false);
+                stage.show();
+            }
 			
 			}
 	}
 	
 	private void alert() {
 		Alert alert = new Alert(AlertType.WARNING);
+		alert.setHeaderText(null);
 		alert.setTitle("Alerte");
 		alert.setContentText("Veuillez choisir une difficulté !");
+		alert.showAndWait();
+	}
+	
+	private void alertModele() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText(null);
+		alert.setTitle("Alerte");
+		alert.setContentText("Le modele existe deja !");
 		alert.showAndWait();
 	}
 		

@@ -11,11 +11,13 @@ import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 
@@ -34,8 +36,7 @@ public class TaskController {
 	public
 	Label label = new Label();
 	
-	String difficulte;
-	
+	public String difficulte;
 	public int h;
 	public double lr;
 	public int l;
@@ -53,6 +54,7 @@ public class TaskController {
 		this.h = JoueurVSIAController.config.hiddenLayerSize;
 		this.lr = JoueurVSIAController.config.learningRate;
 		this.l = JoueurVSIAController.config.numberOfhiddenLayers;
+		this.difficulte = JoueurVSIAController.diff;
 		
 	}
 	
@@ -61,6 +63,7 @@ public class TaskController {
 		try {
 			
 			label.setText("Difficulté : "+difficulte);
+			label.setTextAlignment(TextAlignment.CENTER);
 			System.out.println();
 			System.out.println("START TRAINING ...");
 			System.out.println();

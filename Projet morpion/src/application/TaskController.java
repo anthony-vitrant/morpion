@@ -100,6 +100,7 @@ public class TaskController {
    
 			thread = new Thread(this.task);
             thread.start();
+           
 
 			} 
 			catch (Exception e1) {
@@ -126,9 +127,9 @@ public class TaskController {
                         updateMessage("Error at step " + i + " is " + (error / (double) i));
                     }
                 updateProgress(i,epochs);
-                
                 }
                 
+                net.save("resources/models/Model_"+l+"_"+lr+"_"+h+".srl");
                 System.out.println("Apprenstissage terminé !");
                 
                 error /= epochs;

@@ -10,9 +10,13 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 
 public class TaskController {
@@ -32,9 +36,9 @@ public class TaskController {
 	
 	String difficulte;
 	
-	int h = 256;
-	double lr = 0.1;
-	int l = 2;
+	public int h;
+	public double lr;
+	public int l;
 	int epochs;
 	MultiLayerPerceptron net;
 	private Task<Double> task;
@@ -43,17 +47,19 @@ public class TaskController {
 	public TaskController(String diff) throws InterruptedException, IOException {
 		System.out.println("Contructeur avec difficulté");
 		difficulte = diff;
-		initialize();
 	}
 	
 	public TaskController() {
-		System.out.println("Contructeur sans difficulté");
+		this.h = JoueurVSIAController.config.hiddenLayerSize;
+		this.lr = JoueurVSIAController.config.learningRate;
+		this.l = JoueurVSIAController.config.numberOfhiddenLayers;
 		
 	}
 	
 	public void initialize() throws InterruptedException, IOException {
 			
 		try {
+			
 			label.setText("Difficulté : "+difficulte);
 			System.out.println();
 			System.out.println("START TRAINING ...");
@@ -78,11 +84,10 @@ public class TaskController {
 			HashMap<Integer, Coup> mapTest = Test.loadCoupsFromFile("./resources/train_dev_test/test.txt");
 			System.out.println("---");
 			
-			progressBar.progressProperty().unbind();
-            progressBar.setProgress(0);
-            
             task = getTask(mapTrain);
             
+            progressBar.progressProperty().unbind();
+            progressBar.setProgress(0);
             progressBar.progressProperty().bind(task.progressProperty());
             
             
@@ -93,7 +98,6 @@ public class TaskController {
                 }
             });
    
-            //System.out.println("Learning completed!");
 			thread = new Thread(this.task);
             thread.start();
 

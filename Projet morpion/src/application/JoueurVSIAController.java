@@ -2,6 +2,8 @@ package application;
 
 import javafx.event.ActionEvent;
 import java.io.IOException;
+import ai.Config;
+import ai.ConfigFileLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,6 +13,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
 public class JoueurVSIAController {
+	
+	public static Config config = null;
+	
+	public static String diff = null;
 	
 	
 	public
@@ -22,9 +28,22 @@ public class JoueurVSIAController {
 		}
 		else {
 			
-			String diff = difficulte.getValue();
+			diff = difficulte.getValue();
 			System.out.println("Difficulté : "+diff);
 			
+			
+			ConfigFileLoader cfl = new ConfigFileLoader();
+			cfl.loadConfigFile("./resources/config.txt");
+			
+			
+			if (diff.equals("Facile")) {
+				config = cfl.get("F");
+			}
+			else if (diff.equals("Difficile")){
+				config = cfl.get("D");
+			}
+			
+			System.out.println("Config : "+config);
 			
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Task.fxml"));
 			Parent root = fxmlLoader.load();
@@ -33,9 +52,6 @@ public class JoueurVSIAController {
 			stage.setScene(new Scene(root, 500, 200));
 			stage.setResizable(false);
 			stage.show();
-			
-			
-			//TaskController task = new TaskController(difficulte.getValue().toString());
 			
 			}
 	}

@@ -99,8 +99,18 @@ public class TaskController {
                 public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                     textField.setText(t1);
                 }
+                
+                
             });
-   
+            
+            task.setOnFailed(e -> {System.out.println("Echec lors de l'apprentissage");});
+            
+            task.setOnSucceeded(e -> {
+            	System.out.println("Apprenstissage terminé !");
+            	JoueurVSIAController.close(JoueurVSIAController.stageTask);
+            	
+            });
+            
 			thread = new Thread(this.task);
             thread.start();
            
@@ -133,7 +143,7 @@ public class TaskController {
                 }
                 
                 net.save("resources/models/Model_"+l+"_"+lr+"_"+h+".srl");
-                System.out.println("Apprenstissage terminé !");
+
                 
                 error /= epochs;
                 if (epochs < 0){

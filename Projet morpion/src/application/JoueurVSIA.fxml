@@ -43,7 +43,7 @@
                   <Image url="@../../resources/images/joueur.png" />
                </image>
             </ImageView>
-            <Button layoutX="304.0" layoutY="366.0" mnemonicParsing="false" onAction="#lancerPartie" prefHeight="50.0" prefWidth="122.0" text="Lancer la partie" />
+            <Button fx:id="btn_lancer" layoutX="304.0" layoutY="366.0" mnemonicParsing="false" onAction="#lancerPartie" prefHeight="50.0" prefWidth="122.0" text="Lancer la partie" />
          </children>
       </AnchorPane>
    </center>

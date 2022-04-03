@@ -6,6 +6,7 @@ import java.util.Arrays;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
@@ -48,8 +49,10 @@ public class TerrainJoueurVSJoueurController {
     @FXML
     private Line line8;
 
+    @FXML
+    private Label turn;
     
-    private int playerTurn = 0;
+    private int playerTurn = 1;
 
     ArrayList<Button> buttons;
     ArrayList<Line> lines;
@@ -62,6 +65,7 @@ public class TerrainJoueurVSJoueurController {
         });
         lines = new ArrayList<>(Arrays.asList(line1,line2,line3,line4,line5,line6,line7,line8));
         lines.forEach(line ->{line.setVisible(false);});   
+        updateTurn();
     }
     
     public void restartGame(ActionEvent e) {
@@ -77,8 +81,8 @@ public class TerrainJoueurVSJoueurController {
 
     private void setupButton(Button button) {
         button.setOnMouseClicked(mouseEvent -> {
+        	button.setDisable(true);
             setPlayerSymbol(button);
-            button.setDisable(true);
             checkIfGameIsOver();
         });
     }
@@ -86,16 +90,17 @@ public class TerrainJoueurVSJoueurController {
     public void setPlayerSymbol(Button button){
         if(playerTurn % 2 == 0){
             button.setText("X");
-            button.setStyle("-fx-font-size:40");
             button.setTextFill(Color.BLUE);
+            button.setStyle("-fx-opacity: 1;  -fx-font-size:40");
             playerTurn = 1;
         }
         else{
             button.setText("O");
             button.setTextFill(Color.RED);
-            button.setStyle("-fx-font-size:40");
+            button.setStyle("-fx-opacity: 1; -fx-font-size:40");
             playerTurn = 0;
         }
+        updateTurn();
     }
     
     public void checkIfGameIsOver(){
@@ -128,7 +133,15 @@ public class TerrainJoueurVSJoueurController {
         }
     }
     
-    
+    public void updateTurn() {
+    	if(playerTurn % 2 == 0){
+    		turn.setText("Joueur 2");
+    	}
+    	else {
+    		turn.setText("Joueur 1");
+    	}
+    	
+    }
 
     
 }

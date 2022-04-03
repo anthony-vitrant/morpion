@@ -30,7 +30,7 @@ public class MainController {
 		  Parent root = fxmlLoader.load();
 		  stage = new Stage();
 		  stage.setTitle("Joueur VS Joueur");
-		  stage.setScene(new Scene(root, 700, 500));
+		  stage.setScene(new Scene(root, 725, 550));
 		  stage.setResizable(false);
 		  stage.showAndWait();
 	}

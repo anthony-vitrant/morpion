@@ -26,7 +26,13 @@ public class MainController {
 	}
 	
 	public void joueurVSJoueur(ActionEvent e) throws IOException { // boutton Joueur VS Joueur
-		System.out.println("Joueur VS Joueur...");
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TerrainJoueurVSJoueur.fxml"));
+		  Parent root = fxmlLoader.load();
+		  stage = new Stage();
+		  stage.setTitle("Joueur VS Joueur");
+		  stage.setScene(new Scene(root, 700, 500));
+		  stage.setResizable(false);
+		  stage.showAndWait();
 	}
 	
 	

@@ -140,8 +140,6 @@ public class TerrainJoueurVSJoueurController {
     	else {
     		turn.setText("Joueur 1");
     	}
-    	
     }
 
-    
 }

@@ -39,14 +39,14 @@
                </image>
             </ImageView>
             <Button layoutX="319.0" layoutY="465.0" mnemonicParsing="false" onAction="#restartGame" text="Recommencer" />
-            <Line fx:id="line3" endX="389.3999938964844" endY="45.20001220703125" fill="RED" layoutX="111.0" layoutY="336.0" smooth="false" startX="117.99996948242188" startY="45.20001220703125" strokeWidth="2.0" />
-            <Line fx:id="line1" endX="389.3999938964844" endY="-134.8000030517578" layoutX="111.0" layoutY="336.0" startX="117.99996948242188" startY="-134.8000030517578" strokeWidth="2.0" />
-            <Line fx:id="line2" endX="118.00003051757812" endY="-61.800018310546875" layoutX="111.0" layoutY="353.0" startX="389.3999938964844" startY="-61.800018310546875" strokeWidth="2.0" />
-            <Line fx:id="line4" endX="351.7999572753906" endY="60.39996337890625" layoutX="147.0" layoutY="366.0" startX="82.00003051757812" startY="-209.99998474121094" strokeWidth="2.0" />
-            <Line fx:id="line5" endX="100.00003051757812" endY="30.39996337890625" layoutX="129.0" layoutY="396.0" startX="371.3999938964844" startY="-239.99998474121094" strokeWidth="2.0" />
-            <Line fx:id="line6" endX="163.19998168945312" endY="68.39996337890625" layoutX="111.0" layoutY="358.0" startX="163.19998168945312" startY="-201.99998474121094" strokeWidth="2.0" />
-            <Line fx:id="line7" endX="193.19998168945312" endY="13.39996337890625" layoutX="172.0" layoutY="413.0" startX="193.19998168945312" startY="-257.0" strokeWidth="2.0" />
-            <Line fx:id="line8" endX="-167.80001831054688" endY="73.39996337890625" layoutX="623.0" layoutY="353.0" startX="-167.80001831054688" startY="-196.99998474121094" strokeWidth="2.0" />
+            <Line fx:id="line3" endX="389.3999938964844" endY="45.20001220703125" fill="RED" layoutX="111.0" layoutY="336.0" smooth="false" startX="117.99996948242188" startY="45.20001220703125" strokeWidth="3.0" />
+            <Line fx:id="line1" endX="389.3999938964844" endY="-134.8000030517578" layoutX="111.0" layoutY="336.0" startX="117.99996948242188" startY="-134.8000030517578" strokeWidth="3.0" />
+            <Line fx:id="line2" endX="118.00003051757812" endY="-61.800018310546875" layoutX="111.0" layoutY="353.0" startX="389.3999938964844" startY="-61.800018310546875" strokeWidth="3.0" />
+            <Line fx:id="line4" endX="351.7999572753906" endY="60.39996337890625" layoutX="147.0" layoutY="366.0" startX="82.00003051757812" startY="-209.99998474121094" strokeWidth="3.0" />
+            <Line fx:id="line5" endX="100.00003051757812" endY="30.39996337890625" layoutX="129.0" layoutY="396.0" startX="371.3999938964844" startY="-239.99998474121094" strokeWidth="3.0" />
+            <Line fx:id="line6" endX="163.19998168945312" endY="68.39996337890625" layoutX="111.0" layoutY="358.0" startX="163.19998168945312" startY="-201.99998474121094" strokeWidth="3.0" />
+            <Line fx:id="line7" endX="193.19998168945312" endY="13.39996337890625" layoutX="172.0" layoutY="413.0" startX="193.19998168945312" startY="-257.0" strokeWidth="3.0" />
+            <Line fx:id="line8" endX="-167.80001831054688" endY="73.39996337890625" layoutX="623.0" layoutY="353.0" startX="-167.80001831054688" startY="-196.99998474121094" strokeWidth="3.0" />
             <Label layoutX="73.0" layoutY="259.0" text="Joueur 1">
                <font>
                   <Font size="20.0" />

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Optional;
 
+import javafx.animation.Transition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -17,7 +18,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class TerrainJoueurVSJoueurController {
+public class TerrainJoueurVSJoueurController extends Transition {
 
 	@FXML
     private Button button1;
@@ -179,6 +180,12 @@ public class TerrainJoueurVSJoueurController {
             button.setStyle("-fx-opacity: 1");
         });
     }
+
+	@Override
+	protected void interpolate(double arg0) { // pour fonctionnement de l'animation
+		// TODO Auto-generated method stub
+		
+	}
     
     
 }

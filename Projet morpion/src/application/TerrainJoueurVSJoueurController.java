@@ -6,6 +6,16 @@ import java.util.Arrays;
 import java.util.Optional;
 
 import javafx.animation.Transition;
+import java.util.ResourceBundle;
+import javafx.animation.FadeTransition;
+import javafx.animation.Interpolator;
+import javafx.animation.RotateTransition;
+import javafx.animation.ScaleTransition;
+import javafx.animation.TranslateTransition;
+import javafx.scene.image.ImageView;
+import javafx.scene.transform.Rotate;
+import javafx.util.Duration;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -132,6 +142,16 @@ public class TerrainJoueurVSJoueurController extends Transition {
             	winner = "Joueur 2";
             	disableAll();
             	lines.get(a).setVisible(true);
+            	
+            	  /*TranslateTransition translate = new TranslateTransition ();
+            	  translate.setNode(lines.get(a));
+            	  translate.setDuration(Duration.millis (1000));
+            	  translate.setCycleCount(TranslateTransition.INDEFINITE);
+            	  translate.setByX(500);
+            	  translate.setByY(-250); 
+            	  translate.setAutoReverse (true);
+            	  translate.play ();*/
+            	
             	alert();
             }
 

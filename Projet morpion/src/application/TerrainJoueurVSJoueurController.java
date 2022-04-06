@@ -6,8 +6,10 @@ import java.util.Arrays;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
@@ -54,7 +56,7 @@ public class TerrainJoueurVSJoueurController {
 
     @FXML
     private Label turn;
-    
+    String winner;
     private int playerTurn = 1;
 
     ArrayList<Button> buttons;
@@ -67,7 +69,7 @@ public class TerrainJoueurVSJoueurController {
             button.setFocusTraversable(false);
         });
         lines = new ArrayList<>(Arrays.asList(line1,line2,line3,line4,line5,line6,line7,line8));
-        lines.forEach(line ->{line.setVisible(true);});   // default false
+        lines.forEach(line ->{line.setVisible(false);});   // default false
         updateTurn();
     }
     
@@ -124,27 +126,41 @@ public class TerrainJoueurVSJoueurController {
 
             //X winner
             if (line.equals("XXX")) {
-                //winnerText.setText("X won!");
-            	System.out.println("Winner"+a);
+            	winner = "Joueur 2";
+            	disableAll();
             	lines.get(a).setVisible(true);
+            	alert();
             }
 
             //O winner
             else if (line.equals("OOO")) {
-                //winnerText.setText("O won!");
-            	System.out.println("Winner"+a);
+            	winner = "Joueur 1";
+            	disableAll();
             	lines.get(a).setVisible(true);
+            	alert();
             }
         }
     }
     
     public void updateTurn() {
-    	if(playerTurn % 2 == 0){
-    		turn.setText("Joueur 2");
-    	}
-    	else {
-    		turn.setText("Joueur 1");
-    	}
+    	if(playerTurn % 2 == 0)turn.setText("Joueur 2");
+    	else turn.setText("Joueur 1");
     }
 
+    private void alert() {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setHeaderText(null);
+		alert.setTitle("Fin de la partie");
+		alert.setContentText(winner+" à gagné la partie ! Voulez-vous recommencer ?");
+		alert.showAndWait();
+	}
+    
+    public void disableAll() {
+    	buttons.forEach(button ->{
+            button.setDisable(true);
+            button.setStyle("-fx-opacity: 1");
+        });
+    }
+    
+    
 }

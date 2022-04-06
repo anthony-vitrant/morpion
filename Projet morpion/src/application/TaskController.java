@@ -143,7 +143,7 @@ public class TaskController {
                 }
                 
                 net.save("resources/models/Model_"+l+"_"+lr+"_"+h+".srl");
-
+                
                 
                 error /= epochs;
                 if (epochs < 0){

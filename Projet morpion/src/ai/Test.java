@@ -1,14 +1,11 @@
 package ai;
 
-import application.MainController;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.Arrays;
-//
 import java.util.HashMap;
 
 
@@ -31,7 +28,7 @@ public class Test {
 			//
 			//TRAIN THE MODEL ...
 			//
-			double epochs = 1000000 ;
+			double epochs = 10000 ;
 			HashMap<Integer, Coup> mapTrain = loadCoupsFromFile("./resources/train_dev_test/train.txt");
 			MultiLayerPerceptron net = learn(9, mapTrain, config.hiddenLayerSize, config.learningRate, config.numberOfhiddenLayers, true, epochs);
 			//
@@ -44,8 +41,10 @@ public class Test {
 			//
 			HashMap<Integer, Coup> mapTest = loadCoupsFromFile("./resources/train_dev_test/test.txt");
 			c = mapTrain.get((int)(Math.round(Math.random() * mapTest.size())));
+			System.out.println(c);
 			res = play(net, c);
 			System.out.println("Test predicted: "+Arrays.toString(res) + " -> true: "+ Arrays.toString(c.out));
+			System.out.println(Math.round(Math.random() * mapDev.size()));
 		} 
 		catch (Exception e) {
 			System.out.println("Test.main()");
@@ -185,22 +184,22 @@ public class Test {
 
 		for (int i = 0; i < len; i ++ ) {
 
-			//			System.out.println("---");
-			//			System.out.println("\ti: "+i);
+			//System.out.println("---");
+			//System.out.println("\ti: "+i);
 			if ( tabX.length > i ) {
 				board = new double[size];
 				int c = new Integer(tabX[i]);
-				//				System.out.println("c: "+c);
+				//System.out.println("c: "+c);
 				board[c] = Coup.X ;
 				sequence.put(sequence.size(), board);
 			}
-			//
+			
 			if ( tabO.length > i ) {
 				board = new double[size];
 				int c = new Integer(tabO[i]);
 				board[c] = Coup.O ;
 				sequence.put(sequence.size(), board);
-				//				System.out.println("c: "+c);
+				//System.out.println("c: "+c);
 			}
 
 		}
@@ -232,6 +231,7 @@ public class Test {
 					}
 					boolean in = true ;
 					double[] currentBoard = new double[9];
+					
 					//
 					for (int pos = startEmptyBoard; pos < sequenceMoves.size(); pos ++ ) {
 						double[] board = sequenceMoves.get(pos);
@@ -313,7 +313,7 @@ public class Test {
 			//
 			double error = 0.0 ;
 			MultiLayerPerceptron net = new MultiLayerPerceptron(layers, lr, new SigmoidalTransferFunction());
-			double epochs = 1000000000 ;
+			double epochs = 1000000 ;
 
 			System.out.println("---");
 			System.out.println("Load data ...");
@@ -351,7 +351,7 @@ public class Test {
 
 			double error = 0.0 ;
 			MultiLayerPerceptron net = new MultiLayerPerceptron(layers, 0.1, new SigmoidalTransferFunction());
-			double samples = 1000000000 ;
+			double samples = 1000000 ;
 
 			//TRAINING ...
 			for(int i = 0; i < samples; i++){
@@ -372,7 +372,7 @@ public class Test {
 			error /= samples ;
 			System.out.println("Error is "+error);
 			//
-			System.out.println("Learning completed!");
+			System.out.println("Learning completeddd!");
 
 			//TEST ...
 			double[] inputs = new double[]{0.0, 1.0};

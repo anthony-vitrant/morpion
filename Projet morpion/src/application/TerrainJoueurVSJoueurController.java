@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 public class TerrainJoueurVSJoueurController {
 
@@ -91,13 +93,15 @@ public class TerrainJoueurVSJoueurController {
         if(playerTurn % 2 == 0){
             button.setText("X");
             button.setTextFill(Color.BLUE);
-            button.setStyle("-fx-opacity: 1;  -fx-font-size:40");
+            button.setStyle("-fx-opacity: 1");
+            button.setFont(Font.font("Arial", FontWeight.BOLD, 40));
             playerTurn = 1;
         }
         else{
-            button.setText("O");
+        	button.setText("O");
             button.setTextFill(Color.RED);
-            button.setStyle("-fx-opacity: 1; -fx-font-size:40");
+            button.setStyle("-fx-opacity: 1");
+            button.setFont(Font.font("Arial", FontWeight.BOLD, 40));
             playerTurn = 0;
         }
         updateTurn();

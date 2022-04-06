@@ -3,11 +3,13 @@ package application;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Optional;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.paint.Color;
@@ -152,7 +154,23 @@ public class TerrainJoueurVSJoueurController {
 		alert.setHeaderText(null);
 		alert.setTitle("Fin de la partie");
 		alert.setContentText(winner+" à gagné la partie ! Voulez-vous recommencer ?");
-		alert.showAndWait();
+		
+		ButtonType oui = new ButtonType("Oui");
+		ButtonType non = new ButtonType("Non");
+
+		// Remove default ButtonTypes
+		alert.getButtonTypes().clear();
+
+		alert.getButtonTypes().addAll(oui, non);
+		
+		Optional<ButtonType> option = alert.showAndWait();
+
+	      if (option.get() == null) {
+	    	  System.out.println("test");
+	      } else if (option.get() == oui) {
+	    	  System.out.println("restart");
+	    	  restartGame(null);
+	      }
 	}
     
     public void disableAll() {

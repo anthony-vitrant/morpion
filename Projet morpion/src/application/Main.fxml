@@ -17,11 +17,11 @@
                <font>
                   <Font size="36.0" />
                </font></Label>
-            <Button alignment="TOP_CENTER" layoutX="46.0" layoutY="147.0" mnemonicParsing="false" onAction="#joueurVSJoueur" prefHeight="220.0" prefWidth="300.0" text="Joueur contre Joueur">
+            <Button fx:id="bouttonJoueur" alignment="TOP_CENTER" layoutX="46.0" layoutY="147.0" mnemonicParsing="false" onAction="#joueurVSJoueur" prefHeight="220.0" prefWidth="300.0" text="Joueur contre Joueur">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button alignment="TOP_CENTER" layoutX="385.0" layoutY="147.0" mnemonicParsing="false" onAction="#joueurVSIA" prefHeight="220.0" prefWidth="300.0" text="Joueur contre IA">
+            <Button fx:id="bouttonIA" alignment="TOP_CENTER" layoutX="385.0" layoutY="147.0" mnemonicParsing="false" onAction="#joueurVSIA" prefHeight="220.0" prefWidth="300.0" text="Joueur contre IA">
                <font>
                   <Font size="20.0" />
                </font></Button>

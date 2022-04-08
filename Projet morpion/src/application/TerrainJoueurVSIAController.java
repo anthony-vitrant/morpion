@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 import ai.*;
@@ -16,8 +17,11 @@ import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
@@ -85,24 +89,10 @@ public class TerrainJoueurVSIAController {
     	h = JoueurVSIAController.config.hiddenLayerSize;
     	lr = JoueurVSIAController.config.learningRate;
     	l = JoueurVSIAController.config.numberOfhiddenLayers;
-    	
-    	
-    	net = MultiLayerPerceptron.load("resources/models/Model_"+l+"_"+lr+"_"+h+".srl");
-    	
-    	//HashMap<Integer, Coup> mapTest = loadCoupsFromFile("./resources/train_dev_test/test.txt");
+    	net = MultiLayerPerceptron.load("resources/models/Model_"+l+"_"+lr+"_"+h+".srl"); // chargement du modele
 		c = new Coup(9,"test");
-		//getBoard();
-    	c.addInBoard(board);
-    	System.out.println(c);
-    	double[] res = play(net, c);
-    	
-    	System.out.println("Test predicted: "+Arrays.toString(res) + " -> true: "+ Arrays.toString(c.out));
-    	for (int i=0;i<9;i++) {
-    		System.out.println(c.out[i]);
-    		
-    	}
-    	
-    	
+    	//c.addInBoard(board);
+
         buttons = new ArrayList<>(Arrays.asList(button1,button2,button3,button4,button5,button6,button7,button8,button9));
         buttons.forEach(button ->{
             setupButton(button);
@@ -116,7 +106,9 @@ public class TerrainJoueurVSIAController {
     public void restartGame(ActionEvent e) {
         buttons.forEach(this::resetButton);
         lines.forEach(line ->{line.setVisible(false);});
-        //winnerText.setText("Tic-Tac-Toe");
+        playerTurn = 1;
+        winner = "";
+        updateTurn();
     }
 
     public void resetButton(Button button){
@@ -168,6 +160,7 @@ public class TerrainJoueurVSIAController {
             	System.out.println("Winner = "+winner);
             	lines.get(a).setVisible(true);
             	linesAnimation(a);
+            	alert();
             }
 
             //Joueur gagne (O)
@@ -177,6 +170,7 @@ public class TerrainJoueurVSIAController {
             	System.out.println("Winner = "+winner);
             	lines.get(a).setVisible(true);
             	linesAnimation(a);
+            	alert();
             }
             
             for (int i=0;i<9;i++) {
@@ -266,17 +260,12 @@ public class TerrainJoueurVSIAController {
     		else if(cell.equals("O")) board[i] = 1.0;
     		else board[i] = 0.0;
     	}
-    	System.out.println("Board = ");
-    	for (int i=0;i<9;i++) {
-    		System.out.println(board[i]);
-    	}
     	
-    	if (playerTurn == 0 && winner == "") { // Si c'est a l'IA de jouer
+    	if (playerTurn == 0 && winner == "") { // Si c'est a l'IA de jouer et que la partie est pas finie
     		
     		c.addInBoard(board);
 	    	double[] res = play(net, c);
-	    	System.out.println("Test predicted: "+Arrays.toString(res) + " -> true: "+ Arrays.toString(c.out));
-	    	System.out.println(c);
+	    	//System.out.println("Test predicted: "+Arrays.toString(res) + " -> true: "+ Arrays.toString(c.out));
 	    	
 	    	double max = 0;
 	    	int index = 0;
@@ -289,7 +278,7 @@ public class TerrainJoueurVSIAController {
 	        			index = i;
 	        		}
 	        	}
-		        System.out.println(max);
+		        //System.out.println(max);
 		        if (isEmpty(index)) { // si la case est libre
 		        	buttons.get(index).setText("X");
 		        	buttons.get(index).setTextFill(Color.BLUE);
@@ -298,9 +287,9 @@ public class TerrainJoueurVSIAController {
 		        	max = 0;
 		        	playerTurn = 1;
 		        	updateTurn();
-		        	
+		        	checkIfGameIsOver();
 		        }
-		        else {
+		        else { //case pas libre -> on recommence
 		        	max = 0;
 		        	res[index] = 0;
 		        }
@@ -310,11 +299,34 @@ public class TerrainJoueurVSIAController {
     }
     
     public Boolean isEmpty(int index) {
-    	if (buttons.get(index).getText().equals("")) {
-    		return true;
-    	}
+    	if (buttons.get(index).getText().equals("")) return true;
     	else return false;
     }
+    
+    
+    private void alert() {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setHeaderText(null);
+		alert.setTitle("Fin de la partie");
+		alert.setContentText(winner+" a  gagné la partie ! Voulez-vous recommencer ?");
+		
+		ButtonType oui = new ButtonType("Oui");
+		ButtonType non = new ButtonType("Non");
+
+		// Remove default ButtonTypes
+		alert.getButtonTypes().clear();
+
+		alert.getButtonTypes().addAll(oui, non);
+		
+		Optional<ButtonType> option = alert.showAndWait();
+
+	      if (option.get() == null) {
+	    	  System.out.println("test");
+	      } else if (option.get() == oui) {
+	    	  System.out.println("restart");
+	    	  restartGame(null);
+	      }
+	}
     
     
     public static HashMap<Integer, Coup> loadGames(String fileName) {

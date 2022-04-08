@@ -32,10 +32,6 @@ public class TaskController {
 	public
 	TextField textField = new TextField();
 	
-	@FXML
-	public
-	Label label = new Label();
-	
 	public String difficulte;
 	public int h;
 	public double lr;
@@ -59,11 +55,7 @@ public class TaskController {
 	}
 	
 	public void initialize() throws InterruptedException, IOException {
-			
 		try {
-			
-			label.setText("Difficulté : "+difficulte);
-			label.setTextAlignment(TextAlignment.CENTER);
 			System.out.println();
 			System.out.println("START TRAINING ...");
 			System.out.println();
@@ -93,31 +85,23 @@ public class TaskController {
             progressBar.setProgress(0);
             progressBar.progressProperty().bind(task.progressProperty());
             
-            
             //Ecouteurs
             task.messageProperty().addListener(new ChangeListener<String>() {
                 public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                     textField.setText(t1);
                 }
-                
-                
             });
             
             task.setOnFailed(e -> {System.out.println("Echec lors de l'apprentissage");});
-            
             task.setOnSucceeded(e -> {
             	System.out.println("Apprenstissage terminé !");
             	JoueurVSIAController.close(JoueurVSIAController.stageTask);
-            	
             });
             
 			thread = new Thread(this.task);
             thread.start();
-           
-
 			} 
 			catch (Exception e1) {
-				
 				System.out.println("Test.learn()");
 				e1.printStackTrace();
 				System.exit(-1);
@@ -141,10 +125,7 @@ public class TaskController {
                     }
                 updateProgress(i,epochs);
                 }
-                
-                net.save("resources/models/Model_"+l+"_"+lr+"_"+h+".srl");
-                
-                
+                net.save("resources/models/Model_"+l+"_"+lr+"_"+h+".srl"); // sauvegarde du modele
                 error /= epochs;
                 if (epochs < 0){
                     updateMessage("Error is " + error);
@@ -153,22 +134,4 @@ public class TaskController {
             }
         };
     }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

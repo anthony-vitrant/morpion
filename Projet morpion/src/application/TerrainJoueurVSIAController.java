@@ -3,6 +3,7 @@ package application;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,6 +18,9 @@ import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -27,10 +31,13 @@ import javafx.scene.shape.Line;
 import javafx.util.Duration;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
 
 
 public class TerrainJoueurVSIAController {
 
+	@FXML
+	public Button backToMenu; // boutton retour vers le menu
 	@FXML
     private Button button1;
     @FXML
@@ -50,7 +57,6 @@ public class TerrainJoueurVSIAController {
     @FXML
     private Button button9;
     
-
     @FXML
     private Line line1;
     @FXML
@@ -77,13 +83,21 @@ public class TerrainJoueurVSIAController {
 	public double lr;
 	public int l;
     
-    ArrayList<Button> buttons;
-    ArrayList<Line> lines;
-	String winner="";
+    ArrayList<Button> buttons; // liste des bouttons
+    ArrayList<Line> lines; // liste des lignes pour mettre en evidence les pions du gagnant
+	String winner=""; // "Joueur" ou "IA"
+	
     MultiLayerPerceptron net;
-    String cell;
     Coup c;
     double[] board = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+    
+    public void menu(ActionEvent e) throws IOException { // boutton retour au menu
+		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Main.fxml"));
+		  Parent root = fxmlLoader.load();
+		  Stage window=(Stage) backToMenu.getScene().getWindow();
+		  window.setTitle("Menu principal");
+		  window.setScene(new Scene(root));
+    }
     
     public void initialize() {
     	h = JoueurVSIAController.config.hiddenLayerSize;
@@ -255,9 +269,8 @@ public class TerrainJoueurVSIAController {
 
     public void getBoardAndPlay() {
     	for (int i=0;i<9;i++) {
-    		cell = buttons.get(i).getText();
-    		if (cell.equals("X")) board[i] = -1.0;
-    		else if(cell.equals("O")) board[i] = 1.0;
+    		if (buttons.get(i).getText().equals("X")) board[i] = -1.0;
+    		else if(buttons.get(i).getText().equals("O")) board[i] = 1.0;
     		else board[i] = 0.0;
     	}
     	
@@ -280,6 +293,7 @@ public class TerrainJoueurVSIAController {
 	        	}
 		        //System.out.println(max);
 		        if (isEmpty(index)) { // si la case est libre
+		        	buttons.get(index).setDisable(true);
 		        	buttons.get(index).setText("X");
 		        	buttons.get(index).setTextFill(Color.BLUE);
 		            buttons.get(index).setStyle("-fx-opacity: 1");

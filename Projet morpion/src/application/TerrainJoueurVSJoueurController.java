@@ -1,5 +1,6 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,10 +15,14 @@ import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.scene.image.ImageView;
 import javafx.scene.transform.Rotate;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -30,6 +35,8 @@ import javafx.scene.text.FontWeight;
 
 public class TerrainJoueurVSJoueurController extends Transition {
 
+	public Button backToMenu;
+	
 	@FXML
     private Button button1;
     @FXML
@@ -68,13 +75,22 @@ public class TerrainJoueurVSJoueurController extends Transition {
     private Line line8;
 
     @FXML
-    private Label turn;
-    String winner;
-    private int playerTurn = 1;
+    private Label turn; // label du tour actuel
+    String winner; // defini le gagnant
+    private int playerTurn = 1; //defini le tour du joueur
 
     ArrayList<Button> buttons;
     ArrayList<Line> lines;
 	
+    public void menu(ActionEvent e) throws IOException { // boutton retour au menu
+		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Main.fxml"));
+		  Parent root = fxmlLoader.load();
+		  Stage window=(Stage) backToMenu.getScene().getWindow();
+		  window.setTitle("Menu principale");
+		  window.setScene(new Scene(root));
+    }
+    
+    
     public void initialize() {
         buttons = new ArrayList<>(Arrays.asList(button1,button2,button3,button4,button5,button6,button7,button8,button9));
         buttons.forEach(button ->{
@@ -217,7 +233,7 @@ public class TerrainJoueurVSJoueurController extends Transition {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setHeaderText(null);
 		alert.setTitle("Fin de la partie");
-		alert.setContentText(winner+" à gagné la partie ! Voulez-vous recommencer ?");
+		alert.setContentText(winner+" à gagn� la partie ! Voulez-vous recommencer ?");
 		
 		ButtonType oui = new ButtonType("Oui");
 		ButtonType non = new ButtonType("Non");

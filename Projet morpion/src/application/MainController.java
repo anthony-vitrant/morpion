@@ -6,6 +6,7 @@ import java.io.IOException;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.fxml.FXMLLoader;
 
 
@@ -14,25 +15,26 @@ public class MainController {
 	
 	public static Stage stage;
 	
-
+	public Button bouttonIA;
+	public Button bouttonJoueur;
+	
+	
 	public void joueurVSIA(ActionEvent e) throws IOException { // boutton Joueur VS IA
 		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("JoueurVSIA.fxml"));
 		  Parent root = fxmlLoader.load();
-		  stage = new Stage();
-		  stage.setTitle("Joueur VS IA");
-		  stage.setScene(new Scene(root, 700, 450));
-		  stage.setResizable(false);
-		  stage.showAndWait();  
+		  Stage window=(Stage) bouttonIA.getScene().getWindow();
+		  window.setTitle("Joueur VS IA");
+          window.setScene(new Scene(root));
+
 	}
 	
 	public void joueurVSJoueur(ActionEvent e) throws IOException { // boutton Joueur VS Joueur
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TerrainJoueurVSJoueur.fxml"));
 		  Parent root = fxmlLoader.load();
-		  stage = new Stage();
-		  stage.setTitle("Joueur VS Joueur");
-		  stage.setScene(new Scene(root, 725, 550));
-		  stage.setResizable(false);
-		  stage.showAndWait();
+		  Stage window=(Stage) bouttonJoueur.getScene().getWindow();
+		  window.setTitle("Joueur VS Joueur");
+          window.setScene(new Scene(root));
+
 	}
 	
 	

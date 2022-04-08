@@ -85,18 +85,12 @@ public class TerrainJoueurVSIAController {
     	
     	net = MultiLayerPerceptron.load("resources/models/Model_"+l+"_"+lr+"_"+h+".srl");
     	
-    	//HashMap<Integer, Coup> mapTest = loadCoupsFromFile("./resources/train_dev_test/test.txt");
-		c = new Coup(9,"test");
-		//getBoard();
-    	c.addInBoard(board);
-    	System.out.println(c);
-    	double[] res = play(net, c);
     	
-    	System.out.println("Test predicted: "+Arrays.toString(res) + " -> true: "+ Arrays.toString(c.out));
-    	for (int i=0;i<9;i++) {
-    		System.out.println(c.out[i]);
-    		
-    	}
+		c = new Coup(9,"test");
+    	//c.addInBoard(board);
+
+    	
+  
     	
     	
         buttons = new ArrayList<>(Arrays.asList(button1,button2,button3,button4,button5,button6,button7,button8,button9));
@@ -217,7 +211,7 @@ public class TerrainJoueurVSIAController {
     		System.out.println(board[i]);
     	}
     	
-    	if (playerTurn == 0 && winner == "") { // Si c'est a l'IA de jouer
+    	if (playerTurn == 0 && winner == "") { // Si c'est a l'IA de jouer et que la partie est pas finie
     		
     		c.addInBoard(board);
 	    	double[] res = play(net, c);
@@ -244,7 +238,6 @@ public class TerrainJoueurVSIAController {
 		        	max = 0;
 		        	playerTurn = 1;
 		        	updateTurn();
-		        	
 		        }
 		        else {
 		        	max = 0;
@@ -256,9 +249,7 @@ public class TerrainJoueurVSIAController {
     }
     
     public Boolean isEmpty(int index) {
-    	if (buttons.get(index).getText().equals("")) {
-    		return true;
-    	}
+    	if (buttons.get(index).getText().equals("")) return true;
     	else return false;
     }
     

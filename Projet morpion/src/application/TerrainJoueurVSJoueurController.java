@@ -194,7 +194,7 @@ public class TerrainJoueurVSJoueurController extends Transition {
  	  rotate.setByAngle(360);
  	  rotate.setAxis(Rotate.Z_AXIS);
  	  rotate.play();*/
- 	   
+ 	    
 
  	 /* // escalader
  	  ScaleTransition scale = new ScaleTransition();

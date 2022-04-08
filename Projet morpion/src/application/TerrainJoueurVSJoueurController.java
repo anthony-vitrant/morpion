@@ -240,12 +240,4 @@ public class TerrainJoueurVSJoueurController extends Transition {
             button.setStyle("-fx-opacity: 1");
         });
     }
-
-	@Override
-	protected void interpolate(double arg0) { // pour fonctionnement de l'animation
-		// TODO Auto-generated method stub
-		
-	}
-    
-    
 }

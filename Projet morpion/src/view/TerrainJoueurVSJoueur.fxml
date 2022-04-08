@@ -12,9 +12,9 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="514.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TerrainJoueurVSJoueurController">
    <center>
-      <AnchorPane prefHeight="516.0" prefWidth="725.0" BorderPane.alignment="CENTER">
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="725.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="lbl" layoutX="211.0" layoutY="7.0" prefHeight="83.0" prefWidth="309.0" text="Le Jeu du Morpion">
+            <Label layoutX="211.0" layoutY="7.0" prefHeight="83.0" prefWidth="309.0" text="Le Jeu du Morpion">
                <font>
                   <Font size="36.0" />
                </font></Label>

@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import ai.*;
 import javafx.event.ActionEvent;
@@ -60,16 +61,25 @@ public class TerrainJoueurVSIAController {
     
     private int playerTurn = 1; //Joueur commence
 
+    public int h;
+	public double lr;
+	public int l;
+    
     ArrayList<Button> buttons;
     ArrayList<Line> lines;
-	
+	String winner="";
     MultiLayerPerceptron net;
     String cell;
     Coup c;
-    double[] board = {0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0};
+    double[] board = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
     
     public void initialize() {
-    	net = MultiLayerPerceptron.load("resources/models/Model_"+2+"_"+0.1+"_"+256+".srl");
+    	h = JoueurVSIAController.config.hiddenLayerSize;
+    	lr = JoueurVSIAController.config.learningRate;
+    	l = JoueurVSIAController.config.numberOfhiddenLayers;
+    	
+    	
+    	net = MultiLayerPerceptron.load("resources/models/Model_"+l+"_"+lr+"_"+h+".srl");
     	
     	//HashMap<Integer, Coup> mapTest = loadCoupsFromFile("./resources/train_dev_test/test.txt");
 		c = new Coup(9,"test");
@@ -110,20 +120,20 @@ public class TerrainJoueurVSIAController {
         button.setOnMouseClicked(mouseEvent -> {
         	button.setDisable(true);
             setPlayerSymbol(button);
-            getBoard();
+            getBoardAndPlay();
             checkIfGameIsOver();
         });
     }
     
     public void setPlayerSymbol(Button button){
         if(playerTurn % 2 == 0){
-            button.setText("X");
+            button.setText("X"); //IA
             button.setTextFill(Color.BLUE);
             button.setStyle("-fx-opacity: 1;  -fx-font-size:40");
             playerTurn = 1;
         }
         else{
-            button.setText("O");
+            button.setText("O"); //joueur
             button.setTextFill(Color.RED);
             button.setStyle("-fx-opacity: 1; -fx-font-size:40");
             playerTurn = 0;
@@ -145,20 +155,42 @@ public class TerrainJoueurVSIAController {
                 default -> null;
             };
 
-            //X winner
+            //IA gagne (X)
             if (line.equals("XXX")) {
-                //winnerText.setText("X won!");
-            	System.out.println("Winner"+a);
+            	disableAll();
+            	winner="IA";
+            	System.out.println("Winner = "+winner);
             	lines.get(a).setVisible(true);
             }
 
-            //O winner
+            //Joueur gagne (O)
             else if (line.equals("OOO")) {
-                //winnerText.setText("O won!");
-            	System.out.println("Winner"+a);
+            	disableAll();
+            	winner="Joueur";
+            	System.out.println("Winner = "+winner);
             	lines.get(a).setVisible(true);
             }
+            
+            for (int i=0;i<9;i++) {
+            	if (isEmpty(i)) {
+            		break;
+            	}
+            	else {
+            		if (i==8) {
+            			System.out.println("égalité");
+            			winner="Joueur";
+            			disableAll();
+            		}
+            	}
+            }
         }
+    }
+    
+    public void disableAll() {
+    	buttons.forEach(button ->{
+            button.setDisable(true);
+            button.setStyle("-fx-opacity: 1");
+        });
     }
     
     public void updateTurn() {
@@ -170,7 +202,7 @@ public class TerrainJoueurVSIAController {
     	}
     }
 
-    public void getBoard() {
+    public void getBoardAndPlay() {
     	for (int i=0;i<9;i++) {
     		cell = buttons.get(i).getText();
     		if (cell.equals("X")) board[i] = -1.0;
@@ -182,11 +214,47 @@ public class TerrainJoueurVSIAController {
     		System.out.println(board[i]);
     	}
     	
-    	c.addInBoard(board);
-    	double[] res = play(net, c);
-    	
-    	System.out.println("Test predicted: "+Arrays.toString(res) + " -> true: "+ Arrays.toString(c.out));
-    	System.out.println(c);
+    	if (playerTurn == 0 && winner == "") { // Si c'est a l'IA de jouer
+    		c.addInBoard(board);
+	    	double[] res = play(net, c);
+	    	System.out.println("Test predicted: "+Arrays.toString(res) + " -> true: "+ Arrays.toString(c.out));
+	    	System.out.println(c);
+	    	
+	    	double max = 0;
+	    	int index = 0;
+	    	
+	    	while (playerTurn == 0) {
+	    		
+	    		for (int i=0;i<9;i++) { //On recupere le max de res
+	        		if(res[i] > max) {
+	        			max = res[i];
+	        			index = i;
+	        		}
+	        	}
+		        System.out.println(max);
+		        if (isEmpty(index)) {
+		        	
+		        	buttons.get(index).setText("X");
+		        	buttons.get(index).setTextFill(Color.BLUE);
+		            buttons.get(index).setStyle("-fx-opacity: 1;  -fx-font-size:40");
+		        	max = 0;
+		        	playerTurn = 1;
+		        	
+		        }
+		        else {
+		        	max = 0;
+		        	res[index] = 0;
+		        }
+		        
+	    	}   
+    	}
+    }
+    
+    public Boolean isEmpty(int index) {
+    	if (buttons.get(index).getText().equals("")) {
+    		return true;
+    	}
+    	else return false;
     }
     
     

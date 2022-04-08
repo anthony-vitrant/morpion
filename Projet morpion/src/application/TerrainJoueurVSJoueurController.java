@@ -174,6 +174,7 @@ public class TerrainJoueurVSJoueurController extends Transition {
   	  fade.setToValue(1);
   	  fade.play();
   	  
+  	  
  	 // Traduire
  	 /* TranslateTransition translate = new TranslateTransition ();
  	  translate.setNode (lines.get(a));

@@ -11,12 +11,16 @@ import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 import ai.*;
+import javafx.animation.FadeTransition;
+import javafx.animation.Interpolator;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.util.Duration;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
@@ -163,6 +167,7 @@ public class TerrainJoueurVSIAController {
             	winner="IA";
             	System.out.println("Winner = "+winner);
             	lines.get(a).setVisible(true);
+            	linesAnimation(a);
             }
 
             //Joueur gagne (O)
@@ -171,6 +176,7 @@ public class TerrainJoueurVSIAController {
             	winner="Joueur";
             	System.out.println("Winner = "+winner);
             	lines.get(a).setVisible(true);
+            	linesAnimation(a);
             }
             
             for (int i=0;i<9;i++) {
@@ -179,7 +185,7 @@ public class TerrainJoueurVSIAController {
             	}
             	else {
             		if (i==8) {
-            			System.out.println("égalité");
+            			System.out.println("Ã©galitÃ©");
             			winner="Joueur";
             			disableAll();
             		}
@@ -187,6 +193,54 @@ public class TerrainJoueurVSIAController {
             }
         }
     }
+    
+    
+    public void linesAnimation(int a){
+    	
+    	  // disparaÃ®tre
+    	  FadeTransition fade = new FadeTransition();
+    	  fade.setNode(lines.get(a));
+    	  fade.setDuration(Duration.millis (1000));
+    	  fade.setCycleCount(TranslateTransition.INDEFINITE);
+    	  fade.setInterpolator(Interpolator.LINEAR);
+    	  fade.setFromValue(0);
+    	  fade.setToValue(1);
+    	  fade.play();
+    	  
+    	  
+   	 // Traduire
+   	 /* TranslateTransition translate = new TranslateTransition ();
+   	  translate.setNode (lines.get(a));
+   	  translate.setDuration (Duration.millis (1000));
+   	  translate.setCycleCount (TranslateTransition.INDEFINITE);
+   	  translate.setByX (500);
+   	  translate.setByY (-250); 
+   	  translate.setAutoReverse (true);
+   	  translate.play ();*/
+
+   	  // faire pivoter
+   	 /* RotateTransition rotate = new RotateTransition();
+   	  rotate.setNode(lines.get(a));
+   	  rotate.setDuration(Duration.millis (500));
+   	  rotate.setCycleCount(TranslateTransition.INDEFINITE);
+   	  rotate.setInterpolator(Interpolator.LINEAR);
+   	  rotate.setByAngle(360);
+   	  rotate.setAxis(Rotate.Z_AXIS);
+   	  rotate.play();*/
+   	    
+
+   	 /* // escalader
+   	  ScaleTransition scale = new ScaleTransition();
+   	  scale.setNode(lines.get(a));
+   	  scale.setDuration(Duration.millis (1000));
+   	  scale.setCycleCount(TranslateTransition.INDEFINITE);
+   	  scale.setInterpolator(Interpolator.LINEAR);
+   	  scale.setByX (2.0);
+   	  scale.setByY (2.0);
+   	  scale.setAutoReverse(true);
+   	  scale.play ();*/
+      	
+      }
     
     public void disableAll() {
     	buttons.forEach(button ->{

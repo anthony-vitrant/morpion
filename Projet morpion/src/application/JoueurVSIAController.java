@@ -17,15 +17,24 @@ import javafx.scene.control.Button;
 
 public class JoueurVSIAController {
 	
+	public Button backToMenu; // boutton retour vers le menu
+	
 	public static Stage stageTask = new Stage();
 	public static Config config = null;
 	public static String diff = null;
 	public ChoiceBox<String> difficulte = new ChoiceBox<>();
 	public Button btn_lancer = new Button();
 	
+	public void menu(ActionEvent e) throws IOException { // boutton retour au menu
+		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Main.fxml"));
+		  Parent root = fxmlLoader.load();
+		  Stage window=(Stage) backToMenu.getScene().getWindow();
+		  window.setTitle("Menu principale");
+		  window.setScene(new Scene(root));
+	}
+	
 	public void initialize() {
 		btn_lancer.setDisable(true); //Désactivation du boutton "Lancer la partie"
-		
 	}
 	
 	public static void close(Stage stage) {stage.close();}
@@ -85,17 +94,16 @@ public class JoueurVSIAController {
 			alert();
 		}
 		else {
-			MainController.stage.close(); //fermeture de l'ancienne fenetre
+			//MainController.stage.close(); //fermeture de l'ancienne fenetre
 			
 			System.out.println("Lancement de la partie");
 			
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TerrainJoueurVSIA.fxml")); //chargement du terrain JoueurVSIA
 	        Parent root = fxmlLoader.load();
-	        Stage stage = new Stage();
-	        stage.setTitle("Partie");
-	        stage.setScene(new Scene(root, 720, 510));
-	        stage.setResizable(false);
-	        stage.show();
+	        Stage window=(Stage) backToMenu.getScene().getWindow();
+			window.setTitle("Joueur VS IA");
+	        window.setScene(new Scene(root));
+	        
 		}
 	}
 	

@@ -1,23 +1,15 @@
 package application;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Optional;
-
 import javafx.animation.Transition;
-import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
-import javafx.animation.RotateTransition;
-import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
-import javafx.scene.image.ImageView;
-import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,7 +27,8 @@ import javafx.scene.text.FontWeight;
 
 public class TerrainJoueurVSJoueurController extends Transition {
 
-	public Button backToMenu;
+	@FXML
+	public Button backToMenu; // boutton retour vers le menu
 	
 	@FXML
     private Button button1;
@@ -55,7 +48,6 @@ public class TerrainJoueurVSJoueurController extends Transition {
     private Button button8;
     @FXML
     private Button button9;
-    
 
     @FXML
     private Line line1;
@@ -86,7 +78,7 @@ public class TerrainJoueurVSJoueurController extends Transition {
 		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Main.fxml"));
 		  Parent root = fxmlLoader.load();
 		  Stage window=(Stage) backToMenu.getScene().getWindow();
-		  window.setTitle("Menu principale");
+		  window.setTitle("Menu principal");
 		  window.setScene(new Scene(root));
     }
     
@@ -105,7 +97,6 @@ public class TerrainJoueurVSJoueurController extends Transition {
     public void restartGame(ActionEvent e) {
         buttons.forEach(this::resetButton);
         lines.forEach(line ->{line.setVisible(false);});
-        //winnerText.setText("Tic-Tac-Toe");
     }
 
     public void resetButton(Button button){
@@ -153,26 +144,20 @@ public class TerrainJoueurVSJoueurController extends Transition {
                 default -> null;
             };
 
-            //X winner
             if (line.equals("XXX")) {
             	winner = "Joueur 2";
             	disableAll();
             	lines.get(a).setVisible(true);
-            	
             	linesAnimation(a);
-            	
-            	alert();
+            	alertWin();
             }
 
-            //O winner
             else if (line.equals("OOO")) {
             	winner = "Joueur 1";
             	disableAll();
             	lines.get(a).setVisible(true);
-            	
             	linesAnimation(a);
-            	
-            	alert();
+            	alertWin();
             }
         }
     }
@@ -180,7 +165,7 @@ public class TerrainJoueurVSJoueurController extends Transition {
     
     public void linesAnimation(int a){
     	
-  	  // disparaÃ®tre
+  	  // disparaitre
   	  FadeTransition fade = new FadeTransition();
   	  fade.setNode(lines.get(a));
   	  fade.setDuration(Duration.millis (1000));
@@ -229,24 +214,23 @@ public class TerrainJoueurVSJoueurController extends Transition {
     	else turn.setText("Joueur 1");
     }
 
-    private void alert() {
+    private void alertWin() { // alerte qui affiche le gagnant et demande si on recommence
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setHeaderText(null);
 		alert.setTitle("Fin de la partie");
-		alert.setContentText(winner+" Ã  gagné la partie ! Voulez-vous recommencer ?");
+		alert.setContentText(winner+" a  gagné la partie ! Voulez-vous recommencer ?");
 		
 		ButtonType oui = new ButtonType("Oui");
 		ButtonType non = new ButtonType("Non");
 
 		// Remove default ButtonTypes
 		alert.getButtonTypes().clear();
-
 		alert.getButtonTypes().addAll(oui, non);
 		
 		Optional<ButtonType> option = alert.showAndWait();
 
 	      if (option.get() == null) {
-	    	  System.out.println("test");
+	    	  System.out.println("null");
 	      } else if (option.get() == oui) {
 	    	  System.out.println("restart");
 	    	  restartGame(null);

@@ -44,6 +44,7 @@
                </image>
             </ImageView>
             <Button fx:id="btn_lancer" layoutX="298.0" layoutY="359.0" mnemonicParsing="false" onAction="#lancerPartie" prefHeight="50.0" prefWidth="122.0" text="Lancer la partie" />
+            <Button fx:id="backToMenu" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#menu" text="Retour au menu" />
          </children>
       </AnchorPane>
    </center>

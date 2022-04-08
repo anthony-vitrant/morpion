@@ -164,7 +164,7 @@ public class TerrainJoueurVSJoueurController extends Transition {
     
     public void linesAnimation(int a){
     	
-  	  // disparaître
+  	  // disparaÃ®tre
   	  FadeTransition fade = new FadeTransition();
   	  fade.setNode(lines.get(a));
   	  fade.setDuration(Duration.millis (1000));
@@ -194,7 +194,6 @@ public class TerrainJoueurVSJoueurController extends Transition {
  	  rotate.setByAngle(360);
  	  rotate.setAxis(Rotate.Z_AXIS);
  	  rotate.play();*/
- 	    
 
  	 /* // escalader
  	  ScaleTransition scale = new ScaleTransition();
@@ -218,7 +217,7 @@ public class TerrainJoueurVSJoueurController extends Transition {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setHeaderText(null);
 		alert.setTitle("Fin de la partie");
-		alert.setContentText(winner+" à gagné la partie ! Voulez-vous recommencer ?");
+		alert.setContentText(winner+" Ã  gagnÃ© la partie ! Voulez-vous recommencer ?");
 		
 		ButtonType oui = new ButtonType("Oui");
 		ButtonType non = new ButtonType("Non");

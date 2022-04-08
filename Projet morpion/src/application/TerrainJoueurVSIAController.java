@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
+
 import ai.*;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
@@ -19,6 +21,8 @@ import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 
 public class TerrainJoueurVSIAController {
@@ -124,23 +128,21 @@ public class TerrainJoueurVSIAController {
         button.setOnMouseClicked(mouseEvent -> {
         	button.setDisable(true);
             setPlayerSymbol(button);
-            getBoardAndPlay();
             checkIfGameIsOver();
+            getBoardAndPlay();
         });
     }
     
     public void setPlayerSymbol(Button button){
-        if(playerTurn % 2 == 0){
-            button.setText("X"); //IA
-            button.setTextFill(Color.BLUE);
-            button.setStyle("-fx-opacity: 1;  -fx-font-size:40");
-            playerTurn = 1;
+        if(playerTurn == 1){
+        	button.setText("O"); //joueur
+            button.setTextFill(Color.RED);
+            button.setStyle("-fx-opacity: 1");
+            button.setFont(Font.font("Arial", FontWeight.BOLD, 40));
+            playerTurn = 0;
         }
         else{
-            button.setText("O"); //joueur
-            button.setTextFill(Color.RED);
-            button.setStyle("-fx-opacity: 1; -fx-font-size:40");
-            playerTurn = 0;
+        	System.out.println("erreur");
         }
         updateTurn();
     }
@@ -183,7 +185,7 @@ public class TerrainJoueurVSIAController {
             	}
             	else {
             		if (i==8) {
-            			System.out.println("égalité");
+            			System.out.println("Ã©galitÃ©");
             			winner="Joueur";
             			disableAll();
             		}
@@ -195,7 +197,7 @@ public class TerrainJoueurVSIAController {
     
     public void linesAnimation(int a){
     	
-    	  // disparaître
+    	  // disparaÃ®tre
     	  FadeTransition fade = new FadeTransition();
     	  fade.setNode(lines.get(a));
     	  fade.setDuration(Duration.millis (1000));
@@ -244,6 +246,7 @@ public class TerrainJoueurVSIAController {
     	buttons.forEach(button ->{
             button.setDisable(true);
             button.setStyle("-fx-opacity: 1");
+            button.setFont(Font.font("Arial", FontWeight.BOLD, 40));
         });
     }
     
@@ -269,6 +272,7 @@ public class TerrainJoueurVSIAController {
     	}
     	
     	if (playerTurn == 0 && winner == "") { // Si c'est a l'IA de jouer
+    		
     		c.addInBoard(board);
 	    	double[] res = play(net, c);
 	    	System.out.println("Test predicted: "+Arrays.toString(res) + " -> true: "+ Arrays.toString(c.out));
@@ -286,13 +290,14 @@ public class TerrainJoueurVSIAController {
 	        		}
 	        	}
 		        System.out.println(max);
-		        if (isEmpty(index)) {
-		        	
+		        if (isEmpty(index)) { // si la case est libre
 		        	buttons.get(index).setText("X");
 		        	buttons.get(index).setTextFill(Color.BLUE);
-		            buttons.get(index).setStyle("-fx-opacity: 1;  -fx-font-size:40");
+		            buttons.get(index).setStyle("-fx-opacity: 1");
+		            buttons.get(index).setFont(Font.font("Arial", FontWeight.BOLD, 40));
 		        	max = 0;
 		        	playerTurn = 1;
+		        	updateTurn();
 		        	
 		        }
 		        else {

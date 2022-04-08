@@ -164,7 +164,6 @@ public class TerrainJoueurVSJoueurController extends Transition {
     
     
     public void linesAnimation(int a){
-    	
   	  // disparaitre
   	  FadeTransition fade = new FadeTransition();
   	  fade.setNode(lines.get(a));
@@ -174,7 +173,6 @@ public class TerrainJoueurVSJoueurController extends Transition {
   	  fade.setFromValue(0);
   	  fade.setToValue(1);
   	  fade.play();
-  	  
   	  
  	 // Traduire
  	 /* TranslateTransition translate = new TranslateTransition ();
@@ -206,7 +204,6 @@ public class TerrainJoueurVSJoueurController extends Transition {
  	  scale.setByY (2.0);
  	  scale.setAutoReverse(true);
  	  scale.play ();*/
-    	
     }
     
     public void updateTurn() {

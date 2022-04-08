@@ -32,10 +32,6 @@ public class TaskController {
 	public
 	TextField textField = new TextField();
 	
-	@FXML
-	public
-	Label label = new Label();
-	
 	public String difficulte;
 	public int h;
 	public double lr;
@@ -59,11 +55,8 @@ public class TaskController {
 	}
 	
 	public void initialize() throws InterruptedException, IOException {
-			
 		try {
 			
-			label.setText("Difficulté : "+difficulte);
-			label.setTextAlignment(TextAlignment.CENTER);
 			System.out.println();
 			System.out.println("START TRAINING ...");
 			System.out.println();

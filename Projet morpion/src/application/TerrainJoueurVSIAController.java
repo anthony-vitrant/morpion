@@ -92,7 +92,7 @@ public class TerrainJoueurVSIAController {
     double[] board = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
     
     public void menu(ActionEvent e) throws IOException { // boutton retour au menu
-		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Main.fxml"));
+		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/Main.fxml"));
 		  Parent root = fxmlLoader.load();
 		  Stage window=(Stage) backToMenu.getScene().getWindow();
 		  window.setTitle("Menu principal");

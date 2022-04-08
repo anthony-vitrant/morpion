@@ -26,7 +26,7 @@ public class JoueurVSIAController {
 	public Button btn_lancer = new Button();
 	
 	public void menu(ActionEvent e) throws IOException { // boutton retour au menu
-		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Main.fxml"));
+		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/Main.fxml"));
 		  Parent root = fxmlLoader.load();
 		  Stage window=(Stage) backToMenu.getScene().getWindow();
 		  window.setTitle("Menu principale");
@@ -76,7 +76,7 @@ public class JoueurVSIAController {
                 
             }
             else { //Si le model existe pas, lancement de l'apprentissage
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Task.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/Task.fxml"));
                 Parent root = fxmlLoader.load();
                 stageTask = new Stage();
                 stageTask.setTitle("Apprentissage ["+diff+"]");
@@ -94,11 +94,8 @@ public class JoueurVSIAController {
 			alert();
 		}
 		else {
-			//MainController.stage.close(); //fermeture de l'ancienne fenetre
-			
 			System.out.println("Lancement de la partie");
-			
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TerrainJoueurVSIA.fxml")); //chargement du terrain JoueurVSIA
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/TerrainJoueurVSIA.fxml")); //chargement du terrain JoueurVSIA
 	        Parent root = fxmlLoader.load();
 	        Stage window=(Stage) backToMenu.getScene().getWindow();
 			window.setTitle("Joueur VS IA");

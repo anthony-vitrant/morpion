@@ -20,7 +20,7 @@ public class MainController {
 	
 	
 	public void joueurVSIA(ActionEvent e) throws IOException { // boutton Joueur VS IA
-		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("JoueurVSIA.fxml"));
+		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/JoueurVSIA.fxml"));
 		  Parent root = fxmlLoader.load();
 		  Stage window=(Stage) bouttonIA.getScene().getWindow();
 		  window.setTitle("Joueur VS IA");
@@ -29,7 +29,7 @@ public class MainController {
 	}
 	
 	public void joueurVSJoueur(ActionEvent e) throws IOException { // boutton Joueur VS Joueur
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TerrainJoueurVSJoueur.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/TerrainJoueurVSJoueur.fxml"));
 		  Parent root = fxmlLoader.load();
 		  Stage window=(Stage) bouttonJoueur.getScene().getWindow();
 		  window.setTitle("Joueur VS Joueur");

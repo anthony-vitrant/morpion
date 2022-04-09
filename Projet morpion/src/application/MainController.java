@@ -39,29 +39,53 @@ public class MainController {
     private void makeFadeInTransition() {
   	  FadeTransition fade = new FadeTransition();
     	  fade.setNode(rootPane);
-    	  fade.setDuration(Duration.millis(400));
+    	  fade.setDuration(Duration.millis(300));
     	  fade.setInterpolator(Interpolator.LINEAR);
     	  fade.setFromValue(0);
     	  fade.setToValue(1);
     	  fade.play();
   }
-	
-	public void joueurVSIA(ActionEvent e) throws IOException { // boutton Joueur VS IA
-		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/JoueurVSIA.fxml"));
-		  Parent root = fxmlLoader.load();
+    
+    private void makeFadeOutTransition(String path) {
+  	  FadeTransition fade = new FadeTransition();
+    	  fade.setNode(rootPane);
+    	  fade.setDuration(Duration.millis(300));
+    	  fade.setInterpolator(Interpolator.LINEAR);
+    	  fade.setFromValue(1);
+    	  fade.setToValue(0);
+    	  
+    	  fade.setOnFinished(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+				loadScene(path);
+				
+			}
+		});
+    	  
+    	  fade.play();
+  }
+    
+    public void loadScene(String path) {
+		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
+		  Parent root = null;
+		try {
+			root = fxmlLoader.load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		  Stage window=(Stage) bouttonIA.getScene().getWindow();
 		  window.setTitle("Joueur VS IA");
-          window.setScene(new Scene(root));
-
+		  window.setScene(new Scene(root));
+    }
+	
+	public void joueurVSIA(ActionEvent e) throws IOException { // boutton Joueur VS IA
+		makeFadeOutTransition("/view/JoueurVSIA.fxml");
 	}
 	
 	public void joueurVSJoueur(ActionEvent e) throws IOException { // boutton Joueur VS Joueur
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/TerrainJoueurVSJoueur.fxml"));
-		  Parent root = fxmlLoader.load();
-		  Stage window=(Stage) bouttonJoueur.getScene().getWindow();
-		  window.setTitle("Joueur VS Joueur");
-          window.setScene(new Scene(root));
-
+		makeFadeOutTransition("/view/TerrainJoueurVSJoueur.fxml");
 	}
 	
 	

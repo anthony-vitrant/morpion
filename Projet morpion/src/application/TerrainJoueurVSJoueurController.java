@@ -80,10 +80,10 @@ public class TerrainJoueurVSJoueurController {
     ArrayList<Line> lines;
 	
     public void menu(ActionEvent e) throws IOException { // boutton retour au menu
-          makeFadeOut();
+          makeFadeOutTransition();
     }
     
-    private void makeFadeOut() {
+    private void makeFadeOutTransition() {
     	  FadeTransition fade = new FadeTransition();
       	  fade.setNode(rootPane);
       	  fade.setDuration(Duration.millis(400));
@@ -95,7 +95,7 @@ public class TerrainJoueurVSJoueurController {
 			
 			@Override
 			public void handle(ActionEvent event) {
-				loadNextScene();
+				loadScene("/view/Main.fxml");
 				
 			}
 		});
@@ -103,8 +103,8 @@ public class TerrainJoueurVSJoueurController {
       	  fade.play();
     }
     
-    public void loadNextScene() {
-		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/Main.fxml"));
+    public void loadScene(String path) {
+		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
 		  Parent root = null;
 		try {
 			root = fxmlLoader.load();

@@ -11,6 +11,7 @@ import javafx.animation.TranslateTransition;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,6 +20,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -26,6 +28,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class TerrainJoueurVSJoueurController {
+	
+	@FXML
+	private BorderPane rootPane; // Cadre principal
 
 	@FXML
 	public Button backToMenu; // boutton retour vers le menu
@@ -75,14 +80,44 @@ public class TerrainJoueurVSJoueurController {
     ArrayList<Line> lines;
 	
     public void menu(ActionEvent e) throws IOException { // boutton retour au menu
+          makeFadeOut();
+    }
+    
+    private void makeFadeOut() {
+    	  FadeTransition fade = new FadeTransition();
+      	  fade.setNode(rootPane);
+      	  fade.setDuration(Duration.millis (1000));
+      	  fade.setInterpolator(Interpolator.LINEAR);
+      	  fade.setFromValue(1);
+      	  fade.setToValue(0);
+      	  
+      	  fade.setOnFinished(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+				loadNextScene();
+				
+			}
+		});
+      	  
+      	  fade.play();
+    }
+    
+    public void loadNextScene() {
 		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/Main.fxml"));
-		  Parent root = fxmlLoader.load();
+		  Parent root = null;
+		try {
+			root = fxmlLoader.load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		  Stage window=(Stage) backToMenu.getScene().getWindow();
 		  window.setTitle("Menu principal");
 		  window.setScene(new Scene(root));
     }
-    
-    
+  
+
     public void initialize() {
         buttons = new ArrayList<>(Arrays.asList(button1,button2,button3,button4,button5,button6,button7,button8,button9));
         buttons.forEach(button ->{

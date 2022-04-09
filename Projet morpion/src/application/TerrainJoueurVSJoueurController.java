@@ -25,7 +25,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class TerrainJoueurVSJoueurController extends Transition {
+public class TerrainJoueurVSJoueurController {
 
 	@FXML
 	public Button backToMenu; // boutton retour vers le menu

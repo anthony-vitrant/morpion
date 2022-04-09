@@ -86,7 +86,7 @@ public class TerrainJoueurVSJoueurController {
     private void makeFadeOut() {
     	  FadeTransition fade = new FadeTransition();
       	  fade.setNode(rootPane);
-      	  fade.setDuration(Duration.millis (1000));
+      	  fade.setDuration(Duration.millis(400));
       	  fade.setInterpolator(Interpolator.LINEAR);
       	  fade.setFromValue(1);
       	  fade.setToValue(0);

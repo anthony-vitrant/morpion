@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Optional;
-import javafx.animation.Transition;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
@@ -25,7 +24,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class TerrainJoueurVSJoueurController extends Transition {
+public class TerrainJoueurVSJoueurController {
 
 	@FXML
 	public Button backToMenu; // boutton retour vers le menu
@@ -159,7 +158,25 @@ public class TerrainJoueurVSJoueurController extends Transition {
             	linesAnimation(a);
             	alertWin();
             }
+            else {
+	            for (int i=0;i<9;i++) {
+	            	if (isEmpty(i))break;
+	            	else {
+	            		if (i==8) {
+	            			System.out.println("egalite");
+	            			winner="personne";
+	            			disableAll();
+	            			alertWin();
+	            		}
+	            	}
+	            }
+            }
         }
+    }
+    
+    public Boolean isEmpty(int index) {
+    	if (buttons.get(index).getText().equals("")) return true;
+    	else return false;
     }
     
     
@@ -215,7 +232,7 @@ public class TerrainJoueurVSJoueurController extends Transition {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setHeaderText(null);
 		alert.setTitle("Fin de la partie");
-		alert.setContentText(winner+" a  gagné la partie ! Voulez-vous recommencer ?");
+		alert.setContentText(winner+" a gagné la partie ! Voulez-vous recommencer ?");
 		
 		ButtonType oui = new ButtonType("Oui");
 		ButtonType non = new ButtonType("Non");

@@ -14,7 +14,7 @@
    <right>
       <AnchorPane prefHeight="520.0" prefWidth="725.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="lbl" layoutX="211.0" layoutY="7.0" prefHeight="83.0" prefWidth="309.0" text="Le Jeu du Morpion">
+            <Label layoutX="211.0" layoutY="7.0" prefHeight="83.0" prefWidth="309.0" text="Le Jeu du Morpion">
                <font>
                   <Font size="36.0" />
                </font></Label>
@@ -77,8 +77,8 @@
                   <Image url="@../../resources/images/robot.png" />
                </image>
             </ImageView>
-            <Button fx:id="backToMenu" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#menu" text="Retour au menu">
-            <graphic>
+            <Button fx:id="backToMenu" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#menu" text="Retour en arrière">
+            	<graphic>
         			<ImageView fitHeight="30.0" fitWidth="30.0">
             			<Image url="@../../resources/images/fleche retour.png" />
         			</ImageView>

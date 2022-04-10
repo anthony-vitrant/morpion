@@ -28,7 +28,6 @@
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button layoutX="337.0" layoutY="449.0" mnemonicParsing="false" text="Options" />
             <AmbientLight color="CHARTREUSE" layoutX="135.0" layoutY="109.0" lightOn="true" />
             <ImageView fitHeight="85.0" fitWidth="81.0" layoutX="66.0" layoutY="215.0">
                <image>
@@ -62,19 +61,14 @@
             </Label>
             <MenuBar layoutX="2.0" layoutY="1.0" prefHeight="26.0" prefWidth="728.0">
               <menus>
-                <Menu mnemonicParsing="false" text="File">
+                <Menu mnemonicParsing="false" text="Options">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
+                    <MenuItem mnemonicParsing="false" text="Paramètres" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
+                <Menu mnemonicParsing="false" text="Aide">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
+                    <MenuItem mnemonicParsing="false" text="Règles du jeu" />
                   </items>
                 </Menu>
               </menus>

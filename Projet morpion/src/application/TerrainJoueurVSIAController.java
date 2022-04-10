@@ -181,20 +181,20 @@ public class TerrainJoueurVSIAController {
             	linesAnimation(a);
             	alert();
             }
-            else {
-	            for (int i=0;i<9;i++) {
-	            	if (isEmpty(i))break;
-	            	else {
-	            		if (i==8) {
-	            			System.out.println("egalite");
-	            			winner="personne";
-	            			disableAll();
-	            			alert();
-	            		}
-	            	}
-	            }
-            }
+            
         }
+        for (int i=0;i<9;i++) {
+        	if (isEmpty(i))break;
+        	else {
+        		if (i==8) {
+        			System.out.println("egalite");
+        			winner="Egalité, personne";
+        			disableAll();
+        			alert();
+        		}
+        	}
+        }
+        
     }
     
     

@@ -76,7 +76,7 @@ public class MainController {
 			e.printStackTrace();
 		}
 		  Stage window=(Stage) bouttonIA.getScene().getWindow();
-		  window.setTitle("Joueur VS IA");
+		  window.setTitle("Jouer");
 		  window.setScene(new Scene(root));
     }
 	

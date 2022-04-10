@@ -42,7 +42,13 @@
                </image>
             </ImageView>
             <Button fx:id="btn_lancer" layoutX="296.0" layoutY="257.0" mnemonicParsing="false" onAction="#lancerPartie" prefHeight="70.0" prefWidth="153.0" text="Lancer la partie" />
-            <Button fx:id="backToMenu" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#menu" text="Retour au menu" />
+            <Button fx:id="backToMenu" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#menu" text="Retour au menu" >
+            	<graphic>
+        			<ImageView fitHeight="30.0" fitWidth="30.0">
+            			<Image url="@../../resources/images/fleche retour.png" />
+        			</ImageView>
+    			</graphic>
+            </Button>
          </children>
       </AnchorPane>
    </center>

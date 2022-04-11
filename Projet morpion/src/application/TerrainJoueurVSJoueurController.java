@@ -78,9 +78,34 @@ public class TerrainJoueurVSJoueurController {
 
     ArrayList<Button> buttons;
     ArrayList<Line> lines;
+    
+    public void initialize() {
+    	
+    	rootPane.setOpacity(0);
+    	makeFadeInTransition();
+    	
+        buttons = new ArrayList<>(Arrays.asList(button1,button2,button3,button4,button5,button6,button7,button8,button9));
+        buttons.forEach(button ->{
+            setupButton(button);
+            button.setFocusTraversable(false);
+        });
+        lines = new ArrayList<>(Arrays.asList(line1,line2,line3,line4,line5,line6,line7,line8));
+        lines.forEach(line ->{line.setVisible(false);});   // default false
+        updateTurn();
+    }
 	
     public void menu(ActionEvent e) throws IOException { // boutton retour au menu
           makeFadeOutTransition();
+    }
+    
+    private void makeFadeInTransition() {
+    	  FadeTransition fade = new FadeTransition();
+      	  fade.setNode(rootPane);
+      	  fade.setDuration(Duration.millis(300));
+      	  fade.setInterpolator(Interpolator.LINEAR);
+      	  fade.setFromValue(0);
+      	  fade.setToValue(1);
+      	  fade.play();
     }
     
     private void makeFadeOutTransition() {
@@ -115,18 +140,6 @@ public class TerrainJoueurVSJoueurController {
 		  Stage window=(Stage) backToMenu.getScene().getWindow();
 		  window.setTitle("Menu principal");
 		  window.setScene(new Scene(root));
-    }
-  
-
-    public void initialize() {
-        buttons = new ArrayList<>(Arrays.asList(button1,button2,button3,button4,button5,button6,button7,button8,button9));
-        buttons.forEach(button ->{
-            setupButton(button);
-            button.setFocusTraversable(false);
-        });
-        lines = new ArrayList<>(Arrays.asList(line1,line2,line3,line4,line5,line6,line7,line8));
-        lines.forEach(line ->{line.setVisible(false);});   // default false
-        updateTurn();
     }
     
     public void restartGame(ActionEvent e) {

@@ -324,7 +324,7 @@ public class TerrainJoueurVSIAController {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setHeaderText(null);
 		alert.setTitle("Fin de la partie");
-		alert.setContentText(winner+" a gagnÃ© la partie ! Voulez-vous recommencer ?");
+		alert.setContentText(winner+" a gagné la partie ! Voulez-vous recommencer ?");
 		
 		ButtonType oui = new ButtonType("Oui");
 		ButtonType non = new ButtonType("Non");

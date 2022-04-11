@@ -14,6 +14,7 @@ import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,6 +24,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
@@ -32,6 +34,11 @@ import javafx.stage.Stage;
 
 
 public class TerrainJoueurVSIAController {
+	
+    TransitionFade transitionFade = new TransitionFade(); // nouvelle instance
+	
+	@FXML
+	private BorderPane rootPane; // Cadre principal
 
 	@FXML
 	public Button backToMenu; // boutton retour vers le menu
@@ -89,20 +96,20 @@ public class TerrainJoueurVSIAController {
     double[] board = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
     
     public void menu(ActionEvent e) throws IOException { // boutton retour au menu
-		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/JoueurVSIA.fxml"));
-		  Parent root = fxmlLoader.load();
-		  Stage window=(Stage) backToMenu.getScene().getWindow();
-		  window.setTitle("Menu principal");
-		  window.setScene(new Scene(root));
+		transitionFade.makeFadeOutTransition("/view/JoueurVSIA.fxml", "Menu principal", backToMenu, rootPane);
     }
     
     public void initialize() {
+    	
+    	rootPane.setOpacity(0);
+    	transitionFade.makeFadeInTransition(rootPane);
+    	
     	h = JoueurVSIAController.config.hiddenLayerSize;
     	lr = JoueurVSIAController.config.learningRate;
     	l = JoueurVSIAController.config.numberOfhiddenLayers;
     	
     	net = ai.MultiLayerPerceptron.load("resources/models/Model_"+l+"_"+lr+"_"+h+".srl"); // chargement du modele
-		c = new ai.Coup(9, "test");
+		  c = new ai.Coup(9, "test");
 
 
         buttons = new ArrayList<>(Arrays.asList(button1,button2,button3,button4,button5,button6,button7,button8,button9));
@@ -114,6 +121,7 @@ public class TerrainJoueurVSIAController {
         lines.forEach(line ->{line.setVisible(false);});   
         updateTurn();
     }
+
     
     public void restartGame(ActionEvent e) {
         buttons.forEach(this::resetButton);
@@ -189,7 +197,7 @@ public class TerrainJoueurVSIAController {
         	else {
         		if (i==8) {
         			System.out.println("egalite");
-        			winner="Egalit�, personne";
+        			winner="Egalité, personne";
         			disableAll();
         			alert();
         		}
@@ -199,7 +207,7 @@ public class TerrainJoueurVSIAController {
     
     public void linesAnimation(int a){
     	
-	  // disparaître
+	  // disparaÃ®tre
 	  FadeTransition fade = new FadeTransition();
 	  fade.setNode(lines.get(a));
 	  fade.setDuration(Duration.millis (1000));
@@ -316,7 +324,7 @@ public class TerrainJoueurVSIAController {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setHeaderText(null);
 		alert.setTitle("Fin de la partie");
-		alert.setContentText(winner+" a gagn� la partie ! Voulez-vous recommencer ?");
+		alert.setContentText(winner+" a gagné la partie ! Voulez-vous recommencer ?");
 		
 		ButtonType oui = new ButtonType("Oui");
 		ButtonType non = new ButtonType("Non");

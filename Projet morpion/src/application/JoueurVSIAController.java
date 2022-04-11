@@ -1,21 +1,35 @@
 package application;
 
+import javafx.animation.FadeTransition;
+import javafx.animation.Interpolator;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import ai.Config;
 import ai.ConfigFileLoader;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.control.Button;
 
 public class JoueurVSIAController {
+	
+	TransitionFade transitionFade = new TransitionFade();
+	
+	@FXML
+	private BorderPane rootPane; // Cadre principal
 	
 	public Button backToMenu; // boutton retour vers le menu
 	
@@ -25,17 +39,22 @@ public class JoueurVSIAController {
 	public ChoiceBox<String> difficulte = new ChoiceBox<>();
 	public Button btn_lancer = new Button();
 	
-	public void menu(ActionEvent e) throws IOException { // boutton retour au menu
-		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/Main.fxml"));
-		  Parent root = fxmlLoader.load();
-		  Stage window=(Stage) backToMenu.getScene().getWindow();
-		  window.setTitle("Menu principale");
-		  window.setScene(new Scene(root));
-	}
+
+	
 	
 	public void initialize() {
+    	
+    	rootPane.setOpacity(0);
+    	transitionFade.makeFadeInTransition(rootPane);
 		btn_lancer.setDisable(true); //Désactivation du boutton "Lancer la partie"
-	}
+    	
+    }
+	
+    public void menu(ActionEvent e) throws IOException { // boutton retour au menu
+		transitionFade.makeFadeOutTransition("/view/Main.fxml", "Menu principal", backToMenu, rootPane);
+    }
+	
+	
 	
 	public static void close(Stage stage) {stage.close();}
 	
@@ -94,12 +113,7 @@ public class JoueurVSIAController {
 			alert();
 		}
 		else {
-			System.out.println("Lancement de la partie");
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/TerrainJoueurVSIA.fxml")); //chargement du terrain JoueurVSIA
-	        Parent root = fxmlLoader.load();
-	        Stage window=(Stage) backToMenu.getScene().getWindow();
-			window.setTitle("Joueur VS IA");
-	        window.setScene(new Scene(root));
+			transitionFade.makeFadeOutTransition("/view/TerrainJoueurVSIA.fxml", "Joueur VS IA", backToMenu, rootPane);
 	        
 		}
 	}

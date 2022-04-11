@@ -41,8 +41,8 @@
             <Label layoutX="337.0" layoutY="135.0" text="Learning Rate" />
             <Label layoutX="556.0" layoutY="135.0" text="Hidden Layer Size" />
             <Button layoutX="263.0" layoutY="246.0" mnemonicParsing="false" onAction="#reset" text="Réinitialiser aux paramètres par defaut" />
-            <ListView layoutX="77.0" layoutY="289.0" prefHeight="158.0" prefWidth="592.0" />
-            <Button layoutX="281.0" layoutY="462.0" mnemonicParsing="false" text="Supprimer le fichier sélectionné" />
+            <ListView fx:id="list" layoutX="77.0" layoutY="289.0" prefHeight="158.0" prefWidth="592.0" />
+            <Button layoutX="281.0" layoutY="462.0" mnemonicParsing="false" onAction="#supprimer" text="Supprimer le fichier sélectionné" />
          </children>
       </AnchorPane>
    </top>

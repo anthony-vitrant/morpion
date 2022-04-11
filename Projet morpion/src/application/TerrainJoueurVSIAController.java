@@ -110,7 +110,7 @@ public class TerrainJoueurVSIAController {
     	
     	net = ai.MultiLayerPerceptron.load("resources/models/Model_"+l+"_"+lr+"_"+h+".srl"); // chargement du modele
 		c = new ai.Coup(9, "test");
-		net = ai.MultiLayerPerceptron.
+		
 
         buttons = new ArrayList<>(Arrays.asList(button1,button2,button3,button4,button5,button6,button7,button8,button9));
         buttons.forEach(button ->{

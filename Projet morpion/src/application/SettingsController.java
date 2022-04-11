@@ -1,6 +1,7 @@
 package application;
 
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
@@ -10,8 +11,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import ai.Config;
 import ai.ConfigFileLoader;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -29,12 +34,20 @@ public class SettingsController {
 	@FXML
 	public TextField learningRate; 
 	@FXML
-	public TextField hiddenLayerSize; 
+	public TextField hiddenLayerSize;
+	@FXML
+	public ListView<String> list = new ListView<String>();;
 	
 	String fichier; //fichier config.txt
 	String newFile = ""; //nouvelle ligne a inserer dans le fichier
 	Config config;
+	List<String> results = new ArrayList<String>();
 	
+	File[] files;
+	
+	public void initialize() {
+		update();
+	}
 	
 	public void difficultChange(ActionEvent e) {
 		ConfigFileLoader cfl = new ConfigFileLoader();
@@ -98,6 +111,38 @@ public class SettingsController {
 		alert.setTitle("Alerte");
 		alert.setContentText(msg);
 		alert.showAndWait();
+	}
+	
+	public void update() {
+		list.getItems().clear();
+		results.clear();
+		files = new File("./resources/models/").listFiles();
+		for (File file : files) {
+		    if (file.isFile()) {
+		        results.add(file.getName());
+		        list.getItems().add(file.getName());
+		    }
+		}
+		System.out.println(results);
+	}
+	
+	
+	public void supprimer(ActionEvent e) {
+		ObservableList<Integer> index = list.getSelectionModel().getSelectedIndices();
+		
+		System.out.println(index);
+		
+		
+		System.out.println(index.get(0));
+		File file = new File("./resources/models/"+results.get(index.get(0)));
+
+	      if(file.delete()){
+	    	  alert("Le fichier "+file.getName()+" est supprimé");
+	      }
+	      else{
+	    	  System.out.println("L'opération de suppression a echouée");
+	      }
+	      update();
 	}
 	
 }

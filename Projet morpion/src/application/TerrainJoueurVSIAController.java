@@ -109,8 +109,8 @@ public class TerrainJoueurVSIAController {
     	l = JoueurVSIAController.config.numberOfhiddenLayers;
     	
     	net = ai.MultiLayerPerceptron.load("resources/models/Model_"+l+"_"+lr+"_"+h+".srl"); // chargement du modele
-		c = new ai.Coup(9, "test");
-		
+		  c = new ai.Coup(9, "test");
+
 
         buttons = new ArrayList<>(Arrays.asList(button1,button2,button3,button4,button5,button6,button7,button8,button9));
         buttons.forEach(button ->{
@@ -197,7 +197,7 @@ public class TerrainJoueurVSIAController {
         	else {
         		if (i==8) {
         			System.out.println("egalite");
-        			winner="Egalit�, personne";
+        			winner="Egalité, personne";
         			disableAll();
         			alert();
         		}
@@ -207,7 +207,7 @@ public class TerrainJoueurVSIAController {
     
     public void linesAnimation(int a){
     	
-	  // disparaître
+	  // disparaÃ®tre
 	  FadeTransition fade = new FadeTransition();
 	  fade.setNode(lines.get(a));
 	  fade.setDuration(Duration.millis (1000));
@@ -324,7 +324,7 @@ public class TerrainJoueurVSIAController {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setHeaderText(null);
 		alert.setTitle("Fin de la partie");
-		alert.setContentText(winner+" a gagn� la partie ! Voulez-vous recommencer ?");
+		alert.setContentText(winner+" a gagné la partie ! Voulez-vous recommencer ?");
 		
 		ButtonType oui = new ButtonType("Oui");
 		ButtonType non = new ButtonType("Non");

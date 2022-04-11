@@ -29,6 +29,8 @@ import javafx.scene.text.FontWeight;
 
 public class TerrainJoueurVSJoueurController {
 	
+    TransitionFade transitionFade = new TransitionFade();
+	
 	@FXML
 	private BorderPane rootPane; // Cadre principal
 
@@ -82,7 +84,7 @@ public class TerrainJoueurVSJoueurController {
     public void initialize() {
     	
     	rootPane.setOpacity(0);
-    	makeFadeInTransition();
+    	transitionFade.makeFadeInTransition(rootPane);
     	
         buttons = new ArrayList<>(Arrays.asList(button1,button2,button3,button4,button5,button6,button7,button8,button9));
         buttons.forEach(button ->{
@@ -95,51 +97,7 @@ public class TerrainJoueurVSJoueurController {
     }
 	
     public void menu(ActionEvent e) throws IOException { // boutton retour au menu
-          makeFadeOutTransition();
-    }
-    
-    private void makeFadeInTransition() {
-    	  FadeTransition fade = new FadeTransition();
-      	  fade.setNode(rootPane);
-      	  fade.setDuration(Duration.millis(300));
-      	  fade.setInterpolator(Interpolator.LINEAR);
-      	  fade.setFromValue(0);
-      	  fade.setToValue(1);
-      	  fade.play();
-    }
-    
-    private void makeFadeOutTransition() {
-    	  FadeTransition fade = new FadeTransition();
-      	  fade.setNode(rootPane);
-      	  fade.setDuration(Duration.millis(400));
-      	  fade.setInterpolator(Interpolator.LINEAR);
-      	  fade.setFromValue(1);
-      	  fade.setToValue(0);
-      	  
-      	  fade.setOnFinished(new EventHandler<ActionEvent>() {
-			
-			@Override
-			public void handle(ActionEvent event) {
-				loadScene("/view/Main.fxml");
-				
-			}
-		});
-      	  
-      	  fade.play();
-    }
-    
-    public void loadScene(String path) {
-		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
-		  Parent root = null;
-		try {
-			root = fxmlLoader.load();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		  Stage window=(Stage) backToMenu.getScene().getWindow();
-		  window.setTitle("Menu principal");
-		  window.setScene(new Scene(root));
+		transitionFade.makeFadeOutTransition("/view/Main.fxml", "Menu principal", backToMenu, rootPane);
     }
     
     public void restartGame(ActionEvent e) {

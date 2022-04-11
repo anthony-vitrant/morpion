@@ -22,6 +22,9 @@ import javafx.fxml.FXMLLoader;
 
 public class MainController {
 	
+	TransitionFade transitionFade = new TransitionFade();
+
+	
 	@FXML
 	private BorderPane rootPane; // Cadre principal
 	
@@ -33,59 +36,17 @@ public class MainController {
 	
     public void initialize() {
     	rootPane.setOpacity(0);
-    	makeFadeInTransition();
+    	transitionFade.makeFadeInTransition(rootPane);
     }
     
-    private void makeFadeInTransition() {
-  	  FadeTransition fade = new FadeTransition();
-    	  fade.setNode(rootPane);
-    	  fade.setDuration(Duration.millis(300));
-    	  fade.setInterpolator(Interpolator.LINEAR);
-    	  fade.setFromValue(0);
-    	  fade.setToValue(1);
-    	  fade.play();
-  }
-    
-    private void makeFadeOutTransition(String path) {
-  	  FadeTransition fade = new FadeTransition();
-    	  fade.setNode(rootPane);
-    	  fade.setDuration(Duration.millis(300));
-    	  fade.setInterpolator(Interpolator.LINEAR);
-    	  fade.setFromValue(1);
-    	  fade.setToValue(0);
-    	  
-    	  fade.setOnFinished(new EventHandler<ActionEvent>() {
-			
-			@Override
-			public void handle(ActionEvent event) {
-				loadScene(path);
-				
-			}
-		});
-    	  
-    	  fade.play();
-  }
-    
-    public void loadScene(String path) {
-		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
-		  Parent root = null;
-		try {
-			root = fxmlLoader.load();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		  Stage window=(Stage) bouttonIA.getScene().getWindow();
-		  window.setTitle("Jouer");
-		  window.setScene(new Scene(root));
-    }
+
 	
 	public void joueurVSIA(ActionEvent e) throws IOException { // boutton Joueur VS IA
-		makeFadeOutTransition("/view/JoueurVSIA.fxml");
+		transitionFade.makeFadeOutTransition("/view/JoueurVSIA.fxml", "Jouer vs IA", bouttonIA, rootPane);
 	}
 	
 	public void joueurVSJoueur(ActionEvent e) throws IOException { // boutton Joueur VS Joueur
-		makeFadeOutTransition("/view/TerrainJoueurVSJoueur.fxml");
+		transitionFade.makeFadeOutTransition("/view/TerrainJoueurVSJoueur.fxml", "Jouer", bouttonIA, rootPane);
 	}
 	
 	

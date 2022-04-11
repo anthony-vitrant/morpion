@@ -60,5 +60,6 @@ public class TransitionFade {
 		  Stage window=(Stage) backToMenu.getScene().getWindow();
 		  window.setTitle(title);
 		  window.setScene(new Scene(root));
+		  root.getStylesheets().add(getClass().getResource("application.css").toExternalForm()); // ajout du css sur toutes les nouvelles scenes créées
   }
 }

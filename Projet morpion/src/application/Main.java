@@ -17,8 +17,7 @@ public class Main extends Application {
 			primaryStage.setTitle("Menu principal");
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
-			primaryStage.show();
-			
+			primaryStage.show();			
 			
 		} catch(Exception e) {
 			e.printStackTrace();

@@ -205,18 +205,15 @@ public class TerrainJoueurVSIAController {
         }    
     }
     
-    public void linesAnimation(int a){
-    	
-	  // disparaÃ®tre
-	  FadeTransition fade = new FadeTransition();
-	  fade.setNode(lines.get(a));
-	  fade.setDuration(Duration.millis (1000));
-	  fade.setCycleCount(TranslateTransition.INDEFINITE);
-	  fade.setInterpolator(Interpolator.LINEAR);
-	  fade.setFromValue(0);
-	  fade.setToValue(1);
-	  fade.play();
-      	
+    	public void linesAnimation(int a){
+		  FadeTransition fade = new FadeTransition();
+		  fade.setNode(lines.get(a));
+		  fade.setDuration(Duration.millis (1000));
+		  fade.setCycleCount(TranslateTransition.INDEFINITE);
+		  fade.setInterpolator(Interpolator.LINEAR);
+		  fade.setFromValue(0);
+		  fade.setToValue(1);
+		  fade.play();
       }
     
     public void disableAll() {

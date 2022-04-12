@@ -12,58 +12,58 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="514.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+<BorderPane fx:id="notdefined" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" stylesheets="@../application/application.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <center>
-      <AnchorPane prefHeight="520.0" prefWidth="725.0" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="rootPane" prefHeight="450.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="211.0" layoutY="26.0" prefHeight="83.0" prefWidth="309.0" text="Le Jeu du Morpion">
+            <Label layoutX="247.0" layoutY="25.0" prefHeight="83.0" prefWidth="309.0" text="Le Jeu du Morpion">
                <font>
                   <Font size="36.0" />
                </font></Label>
-            <Button fx:id="bouttonJoueur" alignment="TOP_CENTER" layoutX="46.0" layoutY="147.0" mnemonicParsing="false" onAction="#joueurVSJoueur" prefHeight="220.0" prefWidth="300.0" text="Joueur contre Joueur">
+            <Button fx:id="bouttonJoueur" alignment="TOP_CENTER" layoutX="76.0" layoutY="147.0" mnemonicParsing="false" onAction="#joueurVSJoueur" prefHeight="220.0" prefWidth="300.0" text="Joueur contre Joueur">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button fx:id="bouttonIA" alignment="TOP_CENTER" layoutX="385.0" layoutY="147.0" mnemonicParsing="false" onAction="#joueurVSIA" prefHeight="220.0" prefWidth="300.0" text="Joueur contre IA">
+            <Button fx:id="bouttonIA" alignment="TOP_CENTER" layoutX="435.0" layoutY="147.0" mnemonicParsing="false" onAction="#joueurVSIA" prefHeight="220.0" prefWidth="300.0" text="Joueur contre IA">
                <font>
                   <Font size="20.0" />
                </font></Button>
             <AmbientLight color="CHARTREUSE" layoutX="135.0" layoutY="109.0" lightOn="true" />
-            <ImageView fitHeight="85.0" fitWidth="81.0" layoutX="66.0" layoutY="215.0">
+            <ImageView fitHeight="85.0" fitWidth="81.0" layoutX="96.0" layoutY="215.0">
                <image>
                   <Image url="@../../resources/images/joueur.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="85.0" fitWidth="81.0" layoutX="245.0" layoutY="215.0">
+            <ImageView fitHeight="85.0" fitWidth="81.0" layoutX="275.0" layoutY="215.0">
                <image>
                   <Image url="@../../resources/images/joueur.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="85.0" fitWidth="81.0" layoutX="405.0" layoutY="215.0">
+            <ImageView fitHeight="85.0" fitWidth="81.0" layoutX="455.0" layoutY="215.0">
                <image>
                   <Image url="@../../resources/images/joueur.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="585.0" layoutY="217.0">
+            <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="635.0" layoutY="217.0">
                <image>
                   <Image url="@../../resources/images/robot.png" />
                </image>
             </ImageView>
-            <Label layoutX="184.0" layoutY="242.0" text="VS">
+            <Label layoutX="214.0" layoutY="242.0" text="VS">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="522.0" layoutY="242.0" text="VS">
+            <Label layoutX="572.0" layoutY="242.0" text="VS">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <MenuBar layoutX="2.0" layoutY="1.0" prefHeight="26.0" prefWidth="728.0">
+            <MenuBar layoutX="2.0" layoutY="1.0" prefHeight="26.0" prefWidth="800.0">
               <menus>
                 <Menu mnemonicParsing="false" text="Options">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Paramètres des modèles de l'IA"  onAction="#settings"/>
+                    <MenuItem mnemonicParsing="false" onAction="#settings" text="Paramètres des modèles de l'IA" />
                   </items>
                 </Menu>
               </menus>

@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -18,9 +19,9 @@ import javafx.util.Duration;
 public class TransitionFade {
 	
 	
-	public void makeFadeInTransition(BorderPane rootPane) {
+	public void makeFadeInTransition(AnchorPane anchorPane) {
   	  FadeTransition fade = new FadeTransition();
-    	  fade.setNode(rootPane);
+    	  fade.setNode(anchorPane);
     	  fade.setDuration(Duration.millis(300));
     	  fade.setInterpolator(Interpolator.LINEAR);
     	  fade.setFromValue(0);
@@ -28,7 +29,7 @@ public class TransitionFade {
     	  fade.play();
   }
   
-  public void makeFadeOutTransition(String path, String title, Button backToMenu, BorderPane rootPane) {
+  public void makeFadeOutTransition(String path, String title, Button backToMenu, AnchorPane rootPane) {
   	  FadeTransition fade = new FadeTransition();
     	  fade.setNode(rootPane);
     	  fade.setDuration(Duration.millis(400));

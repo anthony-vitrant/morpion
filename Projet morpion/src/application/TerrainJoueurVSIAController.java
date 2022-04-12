@@ -24,6 +24,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -38,7 +39,9 @@ public class TerrainJoueurVSIAController {
     TransitionFade transitionFade = new TransitionFade(); // nouvelle instance
 	
 	@FXML
-	private BorderPane rootPane; // Cadre principal
+	private BorderPane notdefined; // Cadre principal
+	@FXML
+	private AnchorPane rootPane; // Cadre principal
 
 	@FXML
 	public Button backToMenu; // boutton retour vers le menu

@@ -10,6 +10,7 @@ import javafx.util.Duration;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +21,9 @@ public class MainController {
 
 	
 	@FXML
-	private BorderPane rootPane; // Cadre principal
+	private BorderPane notdefined; // Cadre principal
+	@FXML
+	private AnchorPane rootPane; // Cadre principal
 		
 	public static Stage stage;
 	@FXML
@@ -48,7 +51,7 @@ public class MainController {
 		  Parent root = fxmlLoader.load();
 		  stage = new Stage();
 		  stage.setTitle("Paramètres");
-		  stage.setScene(new Scene(root, 720, 500));
+		  stage.setScene(new Scene(root));
 		  stage.setResizable(false);
 		  stage.showAndWait();
 	}

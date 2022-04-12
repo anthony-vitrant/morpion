@@ -21,6 +21,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.control.Button;
 
@@ -29,7 +30,9 @@ public class JoueurVSIAController {
 	TransitionFade transitionFade = new TransitionFade();
 	
 	@FXML
-	private BorderPane rootPane; // Cadre principal
+	private BorderPane notdefined; // Cadre principal
+	@FXML
+	private AnchorPane rootPane; // Cadre principal
 	
 	public Button backToMenu; // boutton retour vers le menu
 	

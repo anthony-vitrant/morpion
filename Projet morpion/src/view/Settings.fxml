@@ -12,16 +12,16 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="514.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SettingsController">
+<BorderPane fx:id="notdefined" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SettingsController">
    <top>
-      <AnchorPane prefHeight="520.0" prefWidth="725.0" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="rootPane" prefHeight="450.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="220.0" prefHeight="42.0" prefWidth="308.0" text="Paramètre des modeles de l'IA" textAlignment="CENTER">
+            <Label layoutX="248.0" prefHeight="42.0" prefWidth="308.0" text="Paramètre des modeles de l'IA" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font></Label>
             <AmbientLight color="CHARTREUSE" layoutX="135.0" layoutY="109.0" lightOn="true" />
-			<ChoiceBox fx:id="difficulte" layoutX="295.0" layoutY="57.0" onAction="#difficultChange" value="Choix de la difficulté">
+			<ChoiceBox fx:id="difficulte" layoutX="323.0" layoutY="57.0" onAction="#difficultChange" value="Choix de la difficulté">
 			    <items>
 			        <FXCollections fx:factory="observableArrayList">
 			            <String fx:value="Facile" />
@@ -29,21 +29,21 @@
 			        </FXCollections>
 			    </items>
 			</ChoiceBox>
-            <Button fx:id="sauvegarder" layoutX="258.0" layoutY="184.0" mnemonicParsing="false" onAction="#save" prefHeight="31.0" prefWidth="230.0" text="Sauvegarder">
+            <Button fx:id="sauvegarder" layoutX="286.0" layoutY="184.0" mnemonicParsing="false" onAction="#save" prefHeight="31.0" prefWidth="230.0" text="Sauvegarder">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <TextField fx:id="numberOfhiddenLayers" layoutX="67.0" layoutY="135.0" />
-            <TextField fx:id="learningRate" layoutX="299.0" layoutY="135.0" />
-            <TextField fx:id="hiddenLayerSize" alignment="TOP_LEFT" layoutX="529.0" layoutY="135.0" />
-            <Label layoutX="72.0" layoutY="104.0" text="Number Of Hidden Layers" />
-            <Label layoutX="337.0" layoutY="104.0" text="Learning Rate" />
-            <Label layoutX="556.0" layoutY="104.0" text="Hidden Layer Size" />
-            <Button layoutX="263.0" layoutY="222.0" mnemonicParsing="false" onAction="#reset" text="Réinitialiser aux paramètres par defaut" />
-            <ListView fx:id="list" layoutX="77.0" layoutY="304.0" prefHeight="143.0" prefWidth="592.0" />
-            <Button layoutX="281.0" layoutY="461.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="34.0" prefWidth="183.0" text="Supprimer le fichier sélectionné" />
-            <Label layoutX="269.0" layoutY="269.0" text="Modèle(s) disponible(s) :">
+            <TextField fx:id="numberOfhiddenLayers" layoutX="95.0" layoutY="135.0" />
+            <TextField fx:id="learningRate" layoutX="327.0" layoutY="135.0" />
+            <TextField fx:id="hiddenLayerSize" alignment="TOP_LEFT" layoutX="557.0" layoutY="135.0" />
+            <Label layoutX="100.0" layoutY="104.0" text="Number Of Hidden Layers" />
+            <Label layoutX="365.0" layoutY="104.0" text="Learning Rate" />
+            <Label layoutX="584.0" layoutY="104.0" text="Hidden Layer Size" />
+            <Button layoutX="291.0" layoutY="222.0" mnemonicParsing="false" onAction="#reset" text="Réinitialiser aux paramètres par defaut" />
+            <ListView fx:id="list" layoutX="105.0" layoutY="304.0" prefHeight="87.0" prefWidth="592.0" />
+            <Button layoutX="311.0" layoutY="402.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="34.0" prefWidth="183.0" text="Supprimer le fichier sélectionné" />
+            <Label layoutX="297.0" layoutY="269.0" text="Modèle(s) disponible(s) :">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

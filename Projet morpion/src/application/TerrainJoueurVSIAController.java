@@ -153,7 +153,7 @@ public class TerrainJoueurVSIAController {
     public void setPlayerSymbol(Button button){
         if(playerTurn == 1){
         	button.setText("O"); //joueur
-            button.setTextFill(Color.RED);
+            button.setTextFill(Color.PURPLE);
             button.setStyle("-fx-opacity: 1");
             button.setFont(Font.font("Arial", FontWeight.BOLD, 40));
             playerTurn = 0;
@@ -267,7 +267,7 @@ public class TerrainJoueurVSIAController {
 		        if (isEmpty(index)) { // si la case est libre
 		        	buttons.get(index).setDisable(true);
 		        	buttons.get(index).setText("X");
-		        	buttons.get(index).setTextFill(Color.BLUE);
+		        	buttons.get(index).setTextFill(Color.BLACK);
 		            buttons.get(index).setStyle("-fx-opacity: 1");
 		            buttons.get(index).setFont(Font.font("Arial", FontWeight.BOLD, 40));
 		        	max = 0;

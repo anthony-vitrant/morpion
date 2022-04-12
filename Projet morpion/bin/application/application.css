@@ -1,18 +1,24 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
 .root{
- -fx-background-color: #111111;
- /*-fx-font-size: 15;*/
- /*-fx-font-family: "Lucida Console";*/
+	-fx-background-image:url('../../resources/images/retrowaves.gif');
 }
 
 .label{
- /*-fx-font-size: 14;*/
- /*-fx-font-family: "Lucida Console";*/
+ -fx-font-size: 14;
+ -fx-font-family: "Lucida Console";
  -fx-text-fill: pink;
  -fx-alignment: center;
 }
 
 #titleLabel{
  -fx-font-size: 70;
+}
+
+.backgroundColor{
+	-fx-background-color: linear-gradient(to right bottom,#61D8DE, #E839F6);
+}
+
+.backgroundColor2{
+	-fx-background-color: linear-gradient(to top,#61D8DE, #E839F6);
 }

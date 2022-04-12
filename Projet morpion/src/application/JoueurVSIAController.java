@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Optional;
 
 import ai.Config;
 import ai.ConfigFileLoader;
@@ -24,6 +25,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 
 public class JoueurVSIAController {
 	
@@ -130,13 +132,24 @@ public class JoueurVSIAController {
 		alert.showAndWait();
 	}
 	
-	private void alertModele() {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setHeaderText(null);
-		alert.setTitle("Alerte");
-		alert.setContentText("Le modele existe deja, vous pouvez lancer la partie !");
-		alert.showAndWait();
-	}
+	private void alertModele() throws IOException {
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setHeaderText(null);
+        alert.setTitle("Alerte");
+        alert.setContentText("Le modele existe deja, voulez-vous lancer la partie ?");
+        
+        ButtonType oui = new ButtonType("Oui");
+        ButtonType non = new ButtonType("Non");
+        alert.getButtonTypes().clear();
+        alert.getButtonTypes().addAll(oui, non); // ajout des bouttons "oui" et "non"
+        
+        Optional<ButtonType> option = alert.showAndWait();
+        if (option.get() == null) { // si pas de réponse
+              System.out.println("null");
+          } else if (option.get() == oui) { // si oui
+              lancerPartie(null);
+          }
+    }
 		
 }
 		

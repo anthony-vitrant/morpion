@@ -16,7 +16,7 @@
    <bottom>
       <AnchorPane fx:id="rootPane" prefHeight="450.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="246.0" layoutY="11.0" prefHeight="83.0" prefWidth="309.0" text="Le Jeu du Morpion">
+            <Label alignment="CENTER" layoutX="-38.0" layoutY="17.0" prefHeight="83.0" prefWidth="800.0" text="Le Jeu du Morpion">
                <font>
                   <Font size="36.0" />
                </font></Label>

@@ -5,11 +5,13 @@
 }
 
 .label{
- -fx-font-size: 14;
+ /*-fx-font-size: 15;*/
  -fx-font-family: "Lucida Console";
- -fx-text-fill: purple;
+ -fx-text-fill: white;
  -fx-alignment: center;
 }
+
+
 
 #titleLabel{
  -fx-font-size: 70;

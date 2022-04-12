@@ -36,11 +36,11 @@ public class MainController {
 
 	
 	public void joueurVSIA(ActionEvent e) throws IOException { // boutton Joueur VS IA
-		transitionFade.makeFadeOutTransition("/view/JoueurVSIA.fxml", "Jouer vs IA", bouttonIA, rootPane);
+		transitionFade.makeFadeOutTransition("/view/JoueurVSIA.fxml", "Joueur VS IA", bouttonIA, rootPane);
 	}
 	
 	public void joueurVSJoueur(ActionEvent e) throws IOException { // boutton Joueur VS Joueur
-		transitionFade.makeFadeOutTransition("/view/TerrainJoueurVSJoueur.fxml", "Jouer", bouttonIA, rootPane);
+		transitionFade.makeFadeOutTransition("/view/TerrainJoueurVSJoueur.fxml", "Joueur VS Joueur", bouttonIA, rootPane);
 	}
 	
 	public void settings(ActionEvent e) throws IOException {

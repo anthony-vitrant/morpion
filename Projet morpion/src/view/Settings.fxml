@@ -16,12 +16,12 @@
    <top>
       <AnchorPane prefHeight="520.0" prefWidth="725.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="226.0" layoutY="10.0" prefHeight="42.0" prefWidth="278.0" text="Paramètre des modeles de l'IA" textAlignment="CENTER">
+            <Label layoutX="220.0" prefHeight="42.0" prefWidth="308.0" text="Paramètre des modeles de l'IA" textAlignment="CENTER">
                <font>
-                  <Font size="20.0" />
+                  <Font name="System Bold" size="20.0" />
                </font></Label>
             <AmbientLight color="CHARTREUSE" layoutX="135.0" layoutY="109.0" lightOn="true" />
-			<ChoiceBox fx:id="difficulte" layoutX="295.0" layoutY="77.0" onAction="#difficultChange" value="Choix de la difficulté">
+			<ChoiceBox fx:id="difficulte" layoutX="295.0" layoutY="57.0" onAction="#difficultChange" value="Choix de la difficulté">
 			    <items>
 			        <FXCollections fx:factory="observableArrayList">
 			            <String fx:value="Facile" />
@@ -29,20 +29,25 @@
 			        </FXCollections>
 			    </items>
 			</ChoiceBox>
-            <Button fx:id="sauvegarder" layoutX="258.0" layoutY="206.0" mnemonicParsing="false" onAction="#save" prefHeight="31.0" prefWidth="230.0" text="Sauvegarder">
+            <Button fx:id="sauvegarder" layoutX="258.0" layoutY="184.0" mnemonicParsing="false" onAction="#save" prefHeight="31.0" prefWidth="230.0" text="Sauvegarder">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <TextField fx:id="numberOfhiddenLayers" layoutX="67.0" layoutY="166.0" />
-            <TextField fx:id="learningRate" layoutX="299.0" layoutY="166.0" />
-            <TextField fx:id="hiddenLayerSize" alignment="TOP_LEFT" layoutX="529.0" layoutY="166.0" />
-            <Label layoutX="72.0" layoutY="135.0" text="Number Of Hidden Layers" />
-            <Label layoutX="337.0" layoutY="135.0" text="Learning Rate" />
-            <Label layoutX="556.0" layoutY="135.0" text="Hidden Layer Size" />
-            <Button layoutX="263.0" layoutY="246.0" mnemonicParsing="false" onAction="#reset" text="Réinitialiser aux paramètres par defaut" />
-            <ListView fx:id="list" layoutX="77.0" layoutY="289.0" prefHeight="158.0" prefWidth="592.0" />
-            <Button layoutX="281.0" layoutY="462.0" mnemonicParsing="false" onAction="#supprimer" text="Supprimer le fichier sélectionné" />
+            <TextField fx:id="numberOfhiddenLayers" layoutX="67.0" layoutY="135.0" />
+            <TextField fx:id="learningRate" layoutX="299.0" layoutY="135.0" />
+            <TextField fx:id="hiddenLayerSize" alignment="TOP_LEFT" layoutX="529.0" layoutY="135.0" />
+            <Label layoutX="72.0" layoutY="104.0" text="Number Of Hidden Layers" />
+            <Label layoutX="337.0" layoutY="104.0" text="Learning Rate" />
+            <Label layoutX="556.0" layoutY="104.0" text="Hidden Layer Size" />
+            <Button layoutX="263.0" layoutY="222.0" mnemonicParsing="false" onAction="#reset" text="Réinitialiser aux paramètres par defaut" />
+            <ListView fx:id="list" layoutX="77.0" layoutY="304.0" prefHeight="143.0" prefWidth="592.0" />
+            <Button layoutX="281.0" layoutY="461.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="34.0" prefWidth="183.0" text="Supprimer le fichier sélectionné" />
+            <Label layoutX="269.0" layoutY="269.0" text="Modèle(s) disponible(s) :">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </top>

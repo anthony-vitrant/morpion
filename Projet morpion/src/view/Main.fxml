@@ -66,11 +66,6 @@
                     <MenuItem mnemonicParsing="false" text="Paramètres des modèles de l'IA"  onAction="#settings"/>
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Aide">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Règles du jeu"/>
-                  </items>
-                </Menu>
               </menus>
             </MenuBar>
          </children>

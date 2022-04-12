@@ -84,7 +84,6 @@ public class TerrainJoueurVSJoueurController {
     ArrayList<Line> lines;
     
     public void initialize() {
-    	
     	rootPane.setOpacity(0);
     	transitionFade.makeFadeInTransition(rootPane);
     	
@@ -94,7 +93,7 @@ public class TerrainJoueurVSJoueurController {
             button.setFocusTraversable(false);
         });
         lines = new ArrayList<>(Arrays.asList(line1,line2,line3,line4,line5,line6,line7,line8));
-        lines.forEach(line ->{line.setVisible(false);});   // default false
+        lines.forEach(line ->{line.setVisible(false);}); // default false
         updateTurn();
     }
 	
@@ -142,7 +141,7 @@ public class TerrainJoueurVSJoueurController {
     
     public void checkIfGameIsOver(){
         for (int a = 0; a < 8; a++) {
-            String line = switch (a) {
+            String line = switch (a) { // test pour chaque cas de win
                 case 0 -> button1.getText() + button2.getText() + button3.getText();
                 case 1 -> button4.getText() + button5.getText() + button6.getText();
                 case 2 -> button7.getText() + button8.getText() + button9.getText();
@@ -212,19 +211,19 @@ public class TerrainJoueurVSJoueurController {
 
 		// Remove default ButtonTypes
 		alert.getButtonTypes().clear();
-		alert.getButtonTypes().addAll(oui, non);
+		alert.getButtonTypes().addAll(oui, non); // ajout des bouttons "oui" et "non"
 		
 		Optional<ButtonType> option = alert.showAndWait();
 
-	      if (option.get() == null) {
+	      if (option.get() == null) { // si pas de réponse
 	    	  System.out.println("null");
-	      } else if (option.get() == oui) {
+	      } else if (option.get() == oui) { // si oui
 	    	  System.out.println("restart");
 	    	  restartGame(null);
 	      }
 	}
     
-    public void disableAll() {
+    public void disableAll() { // désactivation de tous les bouttons
     	buttons.forEach(button ->{
             button.setDisable(true);
             button.setStyle("-fx-opacity: 1");

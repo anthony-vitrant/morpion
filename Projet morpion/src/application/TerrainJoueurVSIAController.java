@@ -109,7 +109,9 @@ public class TerrainJoueurVSIAController {
     	l = JoueurVSIAController.config.numberOfhiddenLayers;
     	
     	net = ai.MultiLayerPerceptron.load("resources/models/Model_"+l+"_"+lr+"_"+h+".srl"); // chargement du modele
-		  c = new ai.Coup(9, "test");
+
+		c = new ai.Coup(9, "test");
+
 
 
         buttons = new ArrayList<>(Arrays.asList(button1,button2,button3,button4,button5,button6,button7,button8,button9));

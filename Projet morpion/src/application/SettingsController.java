@@ -16,6 +16,7 @@ import java.util.List;
 
 import ai.Config;
 import ai.ConfigFileLoader;
+import javafx.beans.value.ChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,7 +37,8 @@ public class SettingsController {
 	@FXML
 	public TextField hiddenLayerSize;
 	@FXML
-	public ListView<String> list = new ListView<String>();;
+	public ListView<String> list = new ListView<String>();
+
 	
 	String fichier; //fichier config.txt
 	String newFile = ""; //nouvelle ligne a inserer dans le fichier
@@ -49,7 +51,7 @@ public class SettingsController {
 		update();
 	}
 	
-	public void difficultChange(ActionEvent e) {
+	public void difficultChange(ActionEvent e) { // lors du changement de la difficulté
 		ConfigFileLoader cfl = new ConfigFileLoader();
 		cfl.loadConfigFile("./resources/config.txt");
 		
@@ -65,7 +67,7 @@ public class SettingsController {
 		hiddenLayerSize.setText(String.valueOf(config.hiddenLayerSize));
 	}
 	
-	public void save(ActionEvent e) throws IOException {
+	public void save(ActionEvent e) throws IOException { // sauvegarde des modifications
 		fichier = "";
 		String newLine = "";
 		File file = new File("./resources/config.txt");
@@ -96,7 +98,7 @@ public class SettingsController {
 		alert("Modification réussie !");
 	}
 	
-	public void reset(ActionEvent e) throws IOException {
+	public void reset(ActionEvent e) throws IOException { // reinitialisation aux paramètres par défaut
 		newFile = "F:256:0.1:2\nD:1024:0.001:3";
 		File file = new File("./resources/config.txt");
 		BufferedWriter writer = new BufferedWriter(new FileWriter(file));
@@ -105,7 +107,7 @@ public class SettingsController {
 		alert("Réinitialisation réussie !");
 	}
 	
-	private void alert(String msg) {
+	private void alert(String msg) { // alerte
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setHeaderText(null);
 		alert.setTitle("Alerte");
@@ -113,7 +115,7 @@ public class SettingsController {
 		alert.showAndWait();
 	}
 	
-	public void update() {
+	public void update() { // mise a jour de la liste des modeles
 		list.getItems().clear();
 		results.clear();
 		files = new File("./resources/models/").listFiles();
@@ -123,28 +125,25 @@ public class SettingsController {
 		        list.getItems().add(file.getName());
 		    }
 		}
-		System.out.println(results);
 	}
-	
 	
 	public void supprimer(ActionEvent e) {
-		ObservableList<Integer> index = list.getSelectionModel().getSelectedIndices();
-		
-		System.out.println(index);
-		
-		
-		System.out.println(index.get(0));
-		File file = new File("./resources/models/"+results.get(index.get(0)));
+		String nom = list.getSelectionModel().getSelectedItem();// on recupere le nom du fichier selectionné
 
-	      if(file.delete()){
-	    	  alert("Le fichier "+file.getName()+" est supprimé");
-	      }
-	      else{
-	    	  System.out.println("L'opération de suppression a echouée");
-	      }
-	      update();
+		if (nom != null) { // si aucun fichier selectionné
+			File file = new File("./resources/models/"+nom);
+		      if(file.delete()){ // si le fichier est bien supprimé
+		    	  alert("Le fichier "+file.getName()+" est supprimé");
+		      }
+		      else{
+		    	  alert("L'opération de suppression a echouée");
+		      }
+		      update(); // mise a jour de la liste des modeles
+		}
+	    else {
+	    	alert("Veuillez selectionner un fichier à supprimer");
+	    }
 	}
-	
 }
 		
 

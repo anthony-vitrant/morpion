@@ -118,7 +118,7 @@ public class JoueurVSIAController {
 			alert();
 		}
 		else {
-			transitionFade.makeFadeOutTransition("/view/TerrainJoueurVSIA.fxml", "Joueur VS IA", backToMenu, rootPane);
+			transitionFade.makeFadeOutTransition("/view/TerrainJoueurVSIA.fxml", "Joueur VS IA ["+diff+"]", backToMenu, rootPane);
 	        
 		}
 	}

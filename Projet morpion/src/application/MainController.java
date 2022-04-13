@@ -17,13 +17,13 @@ import javafx.fxml.FXMLLoader;
 
 public class MainController {
 	
-	TransitionFade transitionFade = new TransitionFade();
+	TransitionFade transitionFade = new TransitionFade(); // nouvelle instance pour les transitions de scene
 
 	
 	@FXML
-	private BorderPane notdefined; // Cadre principal
+	private BorderPane notdefined;
 	@FXML
-	private AnchorPane rootPane; // Cadre principal
+	private AnchorPane rootPane; // Cadre principal sans le BG
 		
 	public static Stage stage;
 	@FXML

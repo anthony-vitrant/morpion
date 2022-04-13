@@ -113,7 +113,7 @@ public class TerrainJoueurVSIAController {
     	
     	net = ai.MultiLayerPerceptron.load("resources/models/Model_"+l+"_"+lr+"_"+h+".srl"); // chargement du modele
 
-		c = new ai.Coup(9, "test");
+		c = new ai.Coup(9, "JoueurVSIA");
 
 
 

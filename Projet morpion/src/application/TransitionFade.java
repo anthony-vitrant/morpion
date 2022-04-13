@@ -32,7 +32,7 @@ public class TransitionFade {
   public void makeFadeOutTransition(String path, String title, Button backToMenu, AnchorPane rootPane) {
   	  FadeTransition fade = new FadeTransition();
     	  fade.setNode(rootPane);
-    	  fade.setDuration(Duration.millis(400));
+    	  fade.setDuration(Duration.millis(300));
     	  fade.setInterpolator(Interpolator.LINEAR);
     	  fade.setFromValue(1);
     	  fade.setToValue(0);

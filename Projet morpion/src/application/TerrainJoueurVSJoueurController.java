@@ -124,14 +124,14 @@ public class TerrainJoueurVSJoueurController {
     public void setPlayerSymbol(Button button){
         if(playerTurn % 2 == 0){
             button.setText("X");
-            button.setTextFill(Color.BLUE);
+            button.setTextFill(Color.BLACK);
             button.setStyle("-fx-opacity: 1");
             button.setFont(Font.font("Arial", FontWeight.BOLD, 40));
             playerTurn = 1;
         }
         else{
         	button.setText("O");
-            button.setTextFill(Color.RED);
+            button.setTextFill(Color.PURPLE);
             button.setStyle("-fx-opacity: 1");
             button.setFont(Font.font("Arial", FontWeight.BOLD, 40));
             playerTurn = 0;

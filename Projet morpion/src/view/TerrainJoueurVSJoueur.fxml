@@ -10,11 +10,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="notdefined" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TerrainJoueurVSJoueurController">
+<BorderPane fx:id="notdefined" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" stylesheets="@../application/application.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TerrainJoueurVSJoueurController">
    <center>
       <AnchorPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="244.0" prefHeight="83.0" prefWidth="309.0" text="Le Jeu du Morpion">
+            <Label id="outline" alignment="CENTER" prefHeight="83.0" prefWidth="800.0" text="Le Jeu du Morpion" textFill="WHITE">
                <font>
                   <Font size="36.0" />
                </font></Label>
@@ -24,22 +24,25 @@
                   <Image url="@../../resources/images/joueur.png" />
                </image>
             </ImageView>
-            <Button fx:id="button1" layoutX="264.0" layoutY="116.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" />
-            <Button fx:id="button2" layoutX="354.0" layoutY="116.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" />
-            <Button fx:id="button3" layoutX="444.0" layoutY="116.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" />
-            <Button fx:id="button4" layoutX="264.0" layoutY="206.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" />
-            <Button fx:id="button5" layoutX="354.0" layoutY="206.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" />
-            <Button fx:id="button6" layoutX="444.0" layoutY="206.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" />
-            <Button fx:id="button7" layoutX="264.0" layoutY="296.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" />
-            <Button fx:id="button8" layoutX="354.0" layoutY="296.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" />
-            <Button fx:id="button9" layoutX="444.0" layoutY="296.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" />
+            <Button id="outline" fx:id="button1" layoutX="264.0" layoutY="116.0" mnemonicParsing="false" opacity="1" prefHeight="90.0" prefWidth="90.0" />
+            <Button id="outline" fx:id="button2" layoutX="354.0" layoutY="116.0" mnemonicParsing="false" opacity="1" prefHeight="90.0" prefWidth="90.0" />
+            <Button id="outline" fx:id="button3" layoutX="444.0" layoutY="116.0" mnemonicParsing="false" opacity="1" prefHeight="90.0" prefWidth="90.0" />
+            <Button id="outline" fx:id="button4" layoutX="264.0" layoutY="206.0" mnemonicParsing="false" opacity="1" prefHeight="90.0" prefWidth="90.0" />
+            <Button id="outline" fx:id="button5" layoutX="354.0" layoutY="206.0" mnemonicParsing="false" opacity="1" prefHeight="90.0" prefWidth="90.0" />
+            <Button id="outline" fx:id="button6" layoutX="444.0" layoutY="206.0" mnemonicParsing="false" opacity="1" prefHeight="90.0" prefWidth="90.0" stylesheets="@../application/application.css" />
+            <Button id="outline" fx:id="button7" layoutX="264.0" layoutY="296.0" mnemonicParsing="false" opacity="1" prefHeight="90.0" prefWidth="90.0" />
+            <Button id="outline" fx:id="button8" layoutX="354.0" layoutY="296.0" mnemonicParsing="false" opacity="1" prefHeight="90.0" prefWidth="90.0" />
+            <Button id="outline" fx:id="button9" layoutX="444.0" layoutY="296.0" mnemonicParsing="false" opacity="1" prefHeight="90.0" prefWidth="90.0" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="72.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../resources/images/joueur.png" />
                </image>
             </ImageView>
-            <Button layoutX="352.0" layoutY="404.0" mnemonicParsing="false" onAction="#restartGame" text="Recommencer" />
-            <Line fx:id="line3" endX="389.3999938964844" endY="45.20001220703125" fill="RED" layoutX="145.0" layoutY="296.0" smooth="false" startX="117.99996948242188" startY="45.20001220703125" strokeWidth="3.0" />
+            <Button layoutX="352.0" layoutY="404.0" mnemonicParsing="false" onAction="#restartGame" text="Recommencer" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Line fx:id="line3" endX="389.3999938964844" endY="45.20001220703125" fill="PURPLE" layoutX="145.0" layoutY="296.0" smooth="false" startX="117.99996948242188" startY="45.20001220703125" strokeWidth="3.0" />
             <Line fx:id="line1" endX="389.3999938964844" endY="-134.8000030517578" layoutX="145.0" layoutY="296.0" startX="117.99996948242188" startY="-134.8000030517578" strokeWidth="3.0" />
             <Line fx:id="line2" endX="118.00003051757812" endY="-61.800018310546875" layoutX="145.0" layoutY="313.0" startX="389.3999938964844" startY="-61.800018310546875" strokeWidth="3.0" />
             <Line fx:id="line4" endX="351.7999572753906" endY="60.39996337890625" layoutX="181.0" layoutY="326.0" startX="82.00003051757812" startY="-209.99998474121094" strokeWidth="3.0" />
@@ -47,42 +50,45 @@
             <Line fx:id="line6" endX="163.19998168945312" endY="68.39996337890625" layoutX="145.0" layoutY="318.0" startX="163.19998168945312" startY="-201.99998474121094" strokeWidth="3.0" />
             <Line fx:id="line7" endX="193.19998168945312" endY="13.39996337890625" layoutX="206.0" layoutY="373.0" startX="193.19998168945312" startY="-257.0" strokeWidth="3.0" />
             <Line fx:id="line8" endX="-167.80001831054688" endY="73.39996337890625" layoutX="657.0" layoutY="313.0" startX="-167.80001831054688" startY="-196.99998474121094" strokeWidth="3.0" />
-            <Label layoutX="106.0" layoutY="252.0" text="Joueur 1">
+            <Label layoutX="106.0" layoutY="252.0" text="Joueur 1" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="618.0" layoutY="252.0" text="Joueur 2">
+            <Label layoutX="618.0" layoutY="252.0" text="Joueur 2" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="128.0" layoutY="296.0" prefHeight="58.0" prefWidth="40.0" text="O" textFill="RED">
+            <Label layoutX="128.0" layoutY="296.0" prefHeight="58.0" prefWidth="40.0" text="O" textFill="PURPLE">
                <font>
                   <Font size="40.0" />
                </font>
             </Label>
-            <Label layoutX="643.0" layoutY="296.0" prefHeight="58.0" prefWidth="25.0" text="X" textFill="BLUE">
+            <Label layoutX="643.0" layoutY="296.0" prefHeight="58.0" prefWidth="25.0" text="X" textFill="BLACK">
                <font>
                   <Font size="40.0" />
                </font>
             </Label>
-            <Label layoutX="300.0" layoutY="73.0" text="Tour actuel :">
+            <Label layoutX="300.0" layoutY="73.0" text="Tour actuel :" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="turn" layoutX="389.0" layoutY="73.0" prefHeight="18.0" prefWidth="106.0" text="joueur">
+            <Label fx:id="turn" layoutX="418.0" layoutY="74.0" prefHeight="18.0" prefWidth="106.0" text="joueur" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Button fx:id="backToMenu" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#menu" text="Retour au menu">
+            <Button fx:id="backToMenu" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#menu" text="Retour au menu" textFill="WHITE">
             	<graphic>
         			<ImageView fitHeight="30.0" fitWidth="30.0">
             			<Image url="@../../resources/images/fleche retour.png" />
         			</ImageView>
     			</graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
             </Button>
          </children>
       </AnchorPane>

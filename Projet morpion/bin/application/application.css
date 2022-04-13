@@ -7,7 +7,7 @@
 .label{
  -fx-font-size: 14;
  -fx-font-family: "Lucida Console";
- -fx-text-fill: pink;
+ -fx-text-fill: purple;
  -fx-alignment: center;
 }
 
@@ -21,4 +21,14 @@
 
 .backgroundColor2{
 	-fx-background-color: linear-gradient(to top,#61D8DE, #E839F6);
+}
+
+.button{
+    -fx-border-color: black;
+    -fx-border-width: 3;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+    /*-fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;*/
+    /*-fx-font-size: 1em; /* 12 */
+    /*-fx-text-fill: #828282;*/
 }

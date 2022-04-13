@@ -16,7 +16,7 @@
    <bottom>
       <AnchorPane fx:id="rootPane" prefHeight="450.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" layoutX="-38.0" layoutY="17.0" prefHeight="83.0" prefWidth="800.0" text="Le Jeu du Morpion">
+            <Label alignment="CENTER" layoutX="-38.0" layoutY="17.0" prefHeight="83.0" prefWidth="800.0" text="Le Jeu du Morpion" textFill="WHITE">
                <font>
                   <Font size="36.0" />
                </font></Label>
@@ -29,7 +29,7 @@
 			        </FXCollections>
 			    </items>
 			</ChoiceBox>
-            <Button layoutX="450.0" layoutY="265.0" mnemonicParsing="false" onAction="#valider" text="Valider la difficulté" />
+            <Button layoutX="450.0" layoutY="265.0" mnemonicParsing="false" onAction="#valider" text="Valider la difficulté" textFill="WHITE" />
             <ImageView fitHeight="112.0" fitWidth="109.0" layoutX="687.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../resources/images/robot.png" />
@@ -40,13 +40,19 @@
                   <Image url="@../../resources/images/joueur.png" />
                </image>
             </ImageView>
-            <Button fx:id="btn_lancer" layoutX="324.0" layoutY="355.0" mnemonicParsing="false" onAction="#lancerPartie" prefHeight="70.0" prefWidth="153.0" text="Lancer la partie" />
-            <Button fx:id="backToMenu" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#menu" text="Retour au menu">
+            <Button fx:id="btn_lancer" layoutX="324.0" layoutY="355.0" mnemonicParsing="false" onAction="#lancerPartie" prefHeight="70.0" prefWidth="153.0" text="Lancer la partie" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font></Button>
+            <Button fx:id="backToMenu" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#menu" text="Retour au menu" textFill="WHITE">
             	<graphic>
         			<ImageView fitHeight="30.0" fitWidth="30.0">
             			<Image url="@../../resources/images/fleche retour.png" />
         			</ImageView>
     			</graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
             </Button>
          </children>
       </AnchorPane>

@@ -16,15 +16,15 @@
    <center>
       <AnchorPane fx:id="rootPane" prefHeight="450.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="2.0" layoutY="37.0" prefHeight="83.0" prefWidth="800.0" text="Le Jeu du Morpion">
+            <Label layoutX="2.0" layoutY="37.0" prefHeight="83.0" prefWidth="800.0" text="Le Jeu du Morpion" textFill="WHITE">
                <font>
                   <Font size="52.0" />
                </font></Label>
-            <Button id="btnMain1" fx:id="bouttonJoueur" alignment="TOP_CENTER" layoutX="76.0" layoutY="147.0" mnemonicParsing="false" onAction="#joueurVSJoueur" prefHeight="220.0" prefWidth="300.0" text="Joueur contre Joueur">
+            <Button id="btnMain1" fx:id="bouttonJoueur" alignment="TOP_CENTER" layoutX="76.0" layoutY="147.0" mnemonicParsing="false" onAction="#joueurVSJoueur" prefHeight="220.0" prefWidth="300.0" text="Joueur contre Joueur" textFill="WHITE">
                <font>
                   <Font size="26.0" />
                </font></Button>
-            <Button fx:id="bouttonIA" alignment="TOP_CENTER" layoutX="435.0" layoutY="147.0" mnemonicParsing="false" onAction="#joueurVSIA" prefHeight="220.0" prefWidth="300.0" text="Joueur contre IA">
+            <Button fx:id="bouttonIA" alignment="TOP_CENTER" layoutX="435.0" layoutY="147.0" mnemonicParsing="false" onAction="#joueurVSIA" prefHeight="220.0" prefWidth="300.0" text="Joueur contre IA" textFill="WHITE">
                <font>
                   <Font size="31.0" />
                </font></Button>
@@ -49,17 +49,17 @@
                   <Image url="@../../resources/images/robot.png" />
                </image>
             </ImageView>
-            <Label layoutX="197.0" layoutY="238.0" text="VS">
+            <Label layoutX="197.0" layoutY="238.0" text="VS" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="48.0" />
                </font>
             </Label>
-            <Label layoutX="556.0" layoutY="233.0" text="VS">
+            <Label layoutX="556.0" layoutY="233.0" text="VS" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="48.0" />
                </font>
             </Label>
-            <MenuBar layoutX="2.0" layoutY="1.0" prefHeight="26.0" prefWidth="800.0">
+            <MenuBar id="menuBar" layoutX="2.0" layoutY="1.0" prefHeight="26.0" prefWidth="800.0">
               <menus>
                 <Menu mnemonicParsing="false" text="Options">
                   <items>

@@ -29,22 +29,7 @@
                   <Font size="31.0" />
                </font></Button>
             <AmbientLight color="CHARTREUSE" layoutX="135.0" layoutY="109.0" lightOn="true" />
-            <ImageView fitHeight="85.0" fitWidth="81.0" layoutX="96.0" layoutY="215.0">
-               <image>
-                  <Image url="@../../resources/images/joueur.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="85.0" fitWidth="81.0" layoutX="275.0" layoutY="215.0">
-               <image>
-                  <Image url="@../../resources/images/joueur.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="85.0" fitWidth="81.0" layoutX="455.0" layoutY="215.0">
-               <image>
-                  <Image url="@../../resources/images/joueur.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="635.0" layoutY="217.0">
+            <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="635.0" layoutY="222.0">
                <image>
                   <Image url="@../../resources/images/robot.png" />
                </image>
@@ -68,6 +53,21 @@
                 </Menu>
               </menus>
             </MenuBar>
+            <ImageView fitHeight="77.0" fitWidth="56.0" layoutX="107.0" layoutY="225.0">
+               <image>
+                  <Image url="@../../resources/images/player.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="77.0" fitWidth="56.0" layoutX="283.0" layoutY="225.0">
+               <image>
+                  <Image url="@../../resources/images/player.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="77.0" fitWidth="56.0" layoutX="476.0" layoutY="225.0">
+               <image>
+                  <Image url="@../../resources/images/player.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </center>

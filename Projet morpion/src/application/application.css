@@ -20,7 +20,7 @@
     -fx-border-color: black;
     -fx-border-width: 3;
     -fx-background-radius: 0;
-    -fx-background-color: transparent;
+    -fx-background-color: purple;
     /*-fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;*/
     /*-fx-font-size: 1em; /* 12 */
     /*-fx-text-fill: #828282;*/
@@ -29,5 +29,11 @@
 #outline .text{
 	-fx-fill: white;
 	-fx-stroke: black;
-	-fx-stroke-width: 2px;
+	-fx-stroke-width: 1.5px;
+}
+
+#outline2 .text{
+	-fx-fill: white;
+	-fx-stroke: black;
+	-fx-stroke-width: 0.5px;
 }

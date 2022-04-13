@@ -14,7 +14,7 @@
    <center>
       <AnchorPane fx:id="rootPane" prefHeight="450.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" layoutX="-2.0" layoutY="4.0" prefHeight="83.0" prefWidth="800.0" text="Le Jeu du Morpion" textFill="WHITE">
+            <Label id="outline" alignment="CENTER" layoutY="-5.0" prefHeight="83.0" prefWidth="800.0" text="Le Jeu du Morpion" textFill="WHITE">
                <font>
                   <Font size="36.0" />
                </font></Label>
@@ -55,12 +55,12 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="132.0" layoutY="300.0" prefHeight="58.0" prefWidth="45.0" text="O" textFill="PURPLE">
+            <Label id="outline" layoutX="122.0" layoutY="300.0" prefHeight="58.0" prefWidth="55.0" text="O" textFill="WHITE">
                <font>
                   <Font size="40.0" />
                </font>
             </Label>
-            <Label layoutX="647.0" layoutY="300.0" prefHeight="58.0" prefWidth="25.0" text="X" textFill="BLACK">
+            <Label id="outline" layoutX="647.0" layoutY="300.0" prefHeight="58.0" prefWidth="25.0" text="X" textFill="WHITE">
                <font>
                   <Font size="40.0" />
                </font>

@@ -4,31 +4,36 @@
 	-fx-background-image:url('../../resources/images/retrowaves.gif');
 }
 
+#menuBar{
+	 -fx-text-fill: black;
+}
+
 .label{
- -fx-font-size: 14;
+ /*-fx-font-size: 15;*/
  -fx-font-family: "Lucida Console";
- -fx-text-fill: purple;
+ /*-fx-text-fill: white;*/
  -fx-alignment: center;
 }
 
-#titleLabel{
- -fx-font-size: 70;
-}
-
-.backgroundColor{
-	-fx-background-color: linear-gradient(to right bottom,#61D8DE, #E839F6);
-}
-
-.backgroundColor2{
-	-fx-background-color: linear-gradient(to top,#61D8DE, #E839F6);
-}
 
 .button{
     -fx-border-color: black;
     -fx-border-width: 3;
     -fx-background-radius: 0;
-    -fx-background-color: transparent;
+    -fx-background-color: purple;
     /*-fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;*/
     /*-fx-font-size: 1em; /* 12 */
     /*-fx-text-fill: #828282;*/
+}
+
+#outline .text{
+	-fx-fill: white;
+	-fx-stroke: black;
+	-fx-stroke-width: 1.5px;
+}
+
+#outline2 .text{
+	-fx-fill: white;
+	-fx-stroke: black;
+	-fx-stroke-width: 0.5px;
 }

@@ -169,16 +169,18 @@ public class TerrainJoueurVSJoueurController {
             	alertWin();
             }
         }
-        for (int i=0;i<9;i++) {
-        	if (buttons.get(i).getText().equals(""))break;
-        	else {
-        		if (i==8) {
-        			System.out.println("egalite");
-        			winner="Egalité, personne";
-        			disableAll();
-        			alertWin();
-        		}
-        	}
+        if (winner == "") {
+	        for (int i=0;i<9;i++) {
+	        	if (buttons.get(i).getText().equals(""))break;
+	        	else {
+	        		if (i==8) {
+	        			System.out.println("egalite");
+	        			winner="Egalité, personne";
+	        			disableAll();
+	        			alertWin();
+	        		}
+	        	}
+	        }
         }
     }
     

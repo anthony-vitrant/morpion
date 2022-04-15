@@ -1,35 +1,33 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
 .root{
-	-fx-background-image:url('../../resources/images/retrowaves.gif');
+	-fx-background-image:url('../../resources/images/retrowaves.gif'); /* on charge le gif qui va servir d'image de fond */
 }
 
 #menuBar{
-	 -fx-text-fill: black;
+	 -fx-text-fill: black; /* la couleur du texte de la menu bar sera noir */
 }
 
 .label{
- /*-fx-font-size: 15;*/
- -fx-font-family: "Lucida Console";
- /*-fx-text-fill: white;*/
- -fx-alignment: center;
+ -fx-font-family: "Lucida Console"; /* on définit une police pour les labels */
+ -fx-alignment: center; /* alignement centré */
 }
 
 
-.button{
+.button{ /* on définir une bordure noire pour les boutons et un fond de couleur violet */
     -fx-border-color: black;
     -fx-border-width: 3;
     -fx-background-radius: 0;
     -fx-background-color: purple;
 }
 
-#outline .text{
+#outline .text{ /*  ici on définit un coutour de couleur noir de largeur 1.5px*/
 	-fx-fill: white;
 	-fx-stroke: black;
 	-fx-stroke-width: 1.5px;
 }
 
-#outline2 .text{
+#outline2 .text{ /*  ici on définit un coutour de couleur noir de largeur 0.5px*/
 	-fx-fill: white;
 	-fx-stroke: black;
 	-fx-stroke-width: 0.5px;

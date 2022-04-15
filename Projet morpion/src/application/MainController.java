@@ -21,7 +21,7 @@ public class MainController {
 
 	
 	@FXML
-	private BorderPane notdefined;
+	private BorderPane notdefined;// Cadre principal avec background
 	@FXML
 	private AnchorPane rootPane; // Cadre principal sans le BG
 		
@@ -39,11 +39,11 @@ public class MainController {
 
 	
 	public void joueurVSIA(ActionEvent e) throws IOException { // boutton Joueur VS IA
-		transitionFade.makeFadeOutTransition("/view/JoueurVSIA.fxml", "Joueur VS IA", bouttonIA, rootPane);
+		transitionFade.makeFadeOutTransition("/view/JoueurVSIA.fxml", "Joueur VS IA", bouttonIA, rootPane);  // si le bouton est activé alors on lance la transition de scene
 	}
 	
 	public void joueurVSJoueur(ActionEvent e) throws IOException { // boutton Joueur VS Joueur
-		transitionFade.makeFadeOutTransition("/view/TerrainJoueurVSJoueur.fxml", "Joueur VS Joueur", bouttonIA, rootPane);
+		transitionFade.makeFadeOutTransition("/view/TerrainJoueurVSJoueur.fxml", "Joueur VS Joueur", bouttonIA, rootPane); // si le bouton est activé alors on lance la transition de scene
 	}
 	
 	public void settings(ActionEvent e) throws IOException {

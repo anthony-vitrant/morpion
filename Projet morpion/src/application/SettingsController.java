@@ -28,7 +28,7 @@ import javafx.scene.control.Button;
 public class SettingsController {
 	
 	@FXML
-	private BorderPane notdefined; // Cadre principal
+	private BorderPane notdefined; // Cadre principal sans background
 	@FXML
 	private AnchorPane rootPane; // Cadre principal
 	

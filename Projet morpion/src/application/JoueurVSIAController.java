@@ -29,12 +29,12 @@ import javafx.scene.control.ButtonType;
 
 public class JoueurVSIAController {
 	
-	TransitionFade transitionFade = new TransitionFade();
+	TransitionFade transitionFade = new TransitionFade(); // Nouvelle instance de la class transition
 	
 	@FXML
 	private BorderPane notdefined; // Cadre principal
 	@FXML
-	private AnchorPane rootPane; // Cadre principal
+	private AnchorPane rootPane; // Cadre principal sans l'arrière plan
 	
 	public Button backToMenu; // boutton retour vers le menu
 	
@@ -49,8 +49,8 @@ public class JoueurVSIAController {
 	
 	public void initialize() {
     	
-    	rootPane.setOpacity(0);
-    	transitionFade.makeFadeInTransition(rootPane);
+    	rootPane.setOpacity(0); // on définit l'opacité de la scene à 0 puis on lance la transition pour la faire apparaitre
+    	transitionFade.makeFadeInTransition(rootPane); // juste ici
 		btn_lancer.setDisable(true); //Désactivation du boutton "Lancer la partie"
     	
     }

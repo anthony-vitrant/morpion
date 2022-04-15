@@ -34,7 +34,7 @@ public class TerrainJoueurVSJoueurController {
 	@FXML
 	private BorderPane notdefined; // Cadre principal
 	@FXML
-	private AnchorPane rootPane; // Cadre principal
+	private AnchorPane rootPane; // Cadre principal sans background
 
 	@FXML
 	public Button backToMenu; // boutton retour vers le menu
